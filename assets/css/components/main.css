@@ -1,5 +1,9 @@
 /* Design System Variables */
 :root {
+
+    /* Typography */
+    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
     /* Colors */
     --primary: #3b82f6;
     --primary-dark: #2563eb;
@@ -11,6 +15,8 @@
     --gray: #6b7280;
     --gray-light: #f3f4f6;
     --white: #ffffff;
+    --error: red;
+    --success: green;
     
     /* Shadows */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -35,8 +41,15 @@
     box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .container {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
     margin-top: 80px;

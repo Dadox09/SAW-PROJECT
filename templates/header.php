@@ -8,7 +8,7 @@ require_once __DIR__ . '/../config/config.php';
 
 <nav class="navbar">
         <div class="navbar-container">
-            <a href="/" class="navbar-brand">
+            <a href="<?php echo BASE_URL; ?>" class="navbar-brand">
                 <i class="fas fa-store"></i>
                 E-commerce
             </a>
@@ -30,19 +30,19 @@ require_once __DIR__ . '/../config/config.php';
                         Carrello
                     </a>
                 </li>
-                <?php if (!isset($_SESSION['user_id'])): ?>
+                <?php if (!isset($_SESSION['username'])): ?>
                     <li class="navbar-item">
-                        <a href="/auth/login.php" class="navbar-button">Accedi</a>
+                        <a href="<?php echo BASE_URL; ?>/pages/formLogin.php" class="navbar-button">Accedi</a>
                     </li>
                 <?php else: ?>
                     <li class="navbar-item">
-                        <a href="/auth/profile.php" class="navbar-link">
+                        <a href="<?php echo BASE_URL; ?>/pages/formProfile.php" class="navbar-link">
                             <i class="fas fa-user"></i>
                             Profilo
                         </a>
                     </li>
                     <li class="navbar-item">
-                        <a href="/auth/logout.php" class="navbar-link">
+                        <a href="<?php echo BASE_URL; ?>/auth/logout.php" class="navbar-link">
                             <i class="fas fa-sign-out-alt"></i>
                             Esci
                         </a>

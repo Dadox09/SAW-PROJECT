@@ -7,7 +7,7 @@ define('BASE_URL', $base_url);
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'ecommerce_db');
+define('DB_NAME', 'sawproject');
 
 // Error reporting
 error_reporting(E_ALL);
