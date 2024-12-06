@@ -41,7 +41,7 @@ include '../templates/header.php';
                 </div>
             </div>
 
-            <button type="submit" class="login-button">
+            <button type="submit" name="submit" class="login-button">
                 <span>Accedi</span>
                 <i class="fas fa-arrow-right"></i>
             </button>
