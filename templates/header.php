@@ -4,6 +4,7 @@ require_once __DIR__ . '/../config/config.php';
 ?>
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/navbar.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/main.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/layout/home.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <nav class="navbar">
@@ -19,10 +20,16 @@ require_once __DIR__ . '/../config/config.php';
 
             <ul class="navbar-menu" id="navbar-menu">
                 <li class="navbar-item">
-                    <a href="/" class="navbar-link">Home</a>
+                    <a href="/" class="navbar-link">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
                 </li>
                 <li class="navbar-item">
-                    <a href="/products" class="navbar-link">Prodotti</a>
+                    <a href="/products" class="navbar-link">
+                        <i class="fas fa-box"></i>
+                        Prodotti
+                    </a>
                 </li>
                 <li class="navbar-item">
                     <a href="/cart" class="navbar-link">
@@ -36,7 +43,7 @@ require_once __DIR__ . '/../config/config.php';
                     </li>
                 <?php else: ?>
                     <li class="navbar-item">
-                        <a href="<?php echo BASE_URL; ?>/pages/formProfile.php" class="navbar-link">
+                        <a href="<?php echo BASE_URL; ?>/pages/show_profile.php" class="navbar-link">
                             <i class="fas fa-user"></i>
                             Profilo
                         </a>

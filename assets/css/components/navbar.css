@@ -1,6 +1,6 @@
 /* Navbar Container */
 .navbar {
-    background-color: var(--primary-dark);
+    background-color: var(--white);
     position: fixed;
     top: 20px;
     left: 0;
@@ -37,7 +37,7 @@
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--white);
+    color: var(--accent);
     transition: var(--transition);
 }
 
@@ -73,7 +73,7 @@
     align-items: center;
     gap: var(--spacing-xs);
     text-decoration: none;
-    color: var(--white);
+    color: var(--accent-dark);
     font-weight: 500;
     font-size: 1rem;
     padding: var(--spacing-xs) var(--spacing-sm);
@@ -87,7 +87,7 @@
 }
 
 .navbar-link:hover {
-    color: var(--primary);
+    color: var(--accent-dark);
     background-color: var(--gray-light);
 }
 
@@ -97,7 +97,7 @@
 
 /* Action Button */
 .navbar-button {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
     color: var(--white);
     padding: var(--spacing-sm) var(--spacing-lg);
     border-radius: 8px;
@@ -117,6 +117,7 @@
     background: linear-gradient(135deg, var(--primary-dark), var(--accent));
 }
 
+
 /* Mobile Toggle */
 .navbar-toggle {
     display: none;
@@ -131,6 +132,7 @@
 .navbar-toggle:hover {
     color: var(--primary);
 }
+
 
 /* Cart Badge */
 .navbar-link .cart-badge {

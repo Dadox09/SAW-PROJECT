@@ -22,8 +22,9 @@ if (isset($_POST['submit'])) {
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
             $_SESSION['is_admin'] = $user['is_admin'];
+            $_SESSION['first_name'] = $user['first_name'];
+            $_SESSION['last_name'] = $user['last_name'];
             
             header('Location: ' . BASE_URL);
             exit;

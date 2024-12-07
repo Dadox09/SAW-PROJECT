@@ -8,17 +8,7 @@
 <body>
     <?php require_once 'templates/header.php'; ?>
 
-    <div class="container">
-        <div class="content">
-            <h1>Benvenuto nel nostro E-commerce</h1>
-            <p>Scopri i nostri prodotti e le offerte speciali</p>
-            
-            <div class="featured-products">
-                <h2>Prodotti in evidenza</h2>
-                <!-- Qui andranno i prodotti in evidenza -->
-            </div>
-        </div>
-    </div>
+    <?php require_once 'templates/home.php'; ?>
 
     <?php require_once 'templates/footer.php'; ?>
 </body>
