@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
 
     if (!$email || !$password) {
         $_SESSION['error'] = "Tutti i campi sono obbligatori";
-        header('Location: ../pages/formLogin.php');
+        header('Location: ' . BASE_URL . '/pages/formLogin.php');
         exit;
     }
 

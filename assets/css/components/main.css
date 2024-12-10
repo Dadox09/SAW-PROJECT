@@ -2,16 +2,16 @@
 :root {
 
     /* Typography */
-    --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family: 'Poppins', sans-serif;
 
     /* Colors Palette*/
-    --primary: #808080; /* Gray */
-    --primary-dark: #666666; /* Dark Gray */
-    --primary-light: #999999; /* Light Gray */
-    --secondary: #663300; /* Dark Brown */
-    --accent: #996633; /* Medium Brown */
-    --accent-dark: #cc9966; /* Light Brown */
-    --accent-super-dark: #663300; /* Dark Brown */    
+    --primary: #2c190f; /* Dark Brown */
+    --primary-dark: #1a0f09; /* Darker Brown */
+    --primary-light: #3d2415; /* Light Brown */
+    --secondary: #f1c40f; /* Golden */
+    --accent: #f39c12; /* Orange */
+    --accent-dark: #e67e22; /* Dark Orange */
+    --accent-super-dark: #d35400; /* Deep Orange */
     --dark: #1f2937;
     --gray-dark: #374151;
     --gray: #6b7280;
@@ -22,8 +22,9 @@
     
     /* Shadows */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -44,11 +45,84 @@
 }
 
 body {
-    background-color: var(--secondary);
     margin: 0;
     padding: 0;
     font-family: var(--font-family);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background: url('../../images/1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--white);
 }
 
+.main-content {
+    padding: 2rem;
+    min-height: calc(100vh - 60px);
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin-top: 2rem;
+    background: rgba(44, 25, 15, 0.85);
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(4px);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.welcome-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: var(--white);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: rgba(44, 25, 15, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    color: var(--white);
+    line-height: 1.5;
+}

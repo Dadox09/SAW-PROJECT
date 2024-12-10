@@ -1,10 +1,9 @@
 <?php
 session_start();
-require_once '../config/config.php';
 require_once '../config/db_connect.php';
 
 if (isset($_POST['submit'])) {
-    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $email = htmlspecialchars(trim($_POST['email']), ENT_QUOTES, 'UTF-8');
     $first_name = htmlspecialchars(trim($_POST['first_name']), ENT_QUOTES, 'UTF-8');
     $last_name = htmlspecialchars(trim($_POST['last_name']), ENT_QUOTES, 'UTF-8');
     $username = htmlspecialchars(trim($_POST['username']), ENT_QUOTES, 'UTF-8');

@@ -29,7 +29,7 @@ include '../templates/header.php';
             }
         ?>
 
-        <form action="../auth/registration.php" method="post" class="registration-form">
+        <form action="<?php echo BASE_URL; ?>/auth/registration.php" method="post" class="registration-form">
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>

@@ -25,7 +25,7 @@ include '../templates/header.php';
         }
         ?>
 
-        <form action="../auth/login.php" method="post" class="login-form">
+        <form action="<?php echo BASE_URL; ?>/auth/login.php" method="post" class="login-form">
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>

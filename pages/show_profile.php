@@ -12,7 +12,7 @@
 <div class="profile-container">
     <div class="profile-content">
         <i class="fas fa-user-circle"></i>
-        <div class="profile-header"><h1>Benvenuto <?php echo $_SESSION['first_name']; ?></h1></div>
+        <div class="profile-header"><h1>Benvenuto <?php echo $_SESSION['first_name']; ?>!</h1></div>
         <div class="profile-card">
             <div class="tab">
                 <button class="tablink active" onclick="openTab(event, 'modify-profile')"><i class="fas fa-user"></i></button>
@@ -52,7 +52,7 @@
         </div>
     </div>
 </div>
-<script src="../assets/js/profile.js/show_profile.js"></script>
+<script src="../assets/js/profile/show_profile.js"></script>
 <?php 
 echo "<script>console.log(" . json_encode($_SESSION) . ");</script>";
 include '../templates/footer.php'; ?>
