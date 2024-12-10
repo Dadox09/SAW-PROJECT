@@ -1,6 +1,6 @@
 .booking-container {
     max-width: 800px;
-    margin: 8rem auto;
+    margin: 6rem auto;
     padding: 2rem;
     background: #fff;
     border-radius: 10px;
@@ -33,7 +33,7 @@
 .booking-form-group select {
     width: 100%;
     padding: 0.8rem;
-    border: 2px solid var(--secondary);
+    border: 2px solid var(--dark);
     border-radius: 5px;
     background: var(--white);
     color: var(--dark);

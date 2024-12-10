@@ -64,7 +64,7 @@ body {
 .welcome-section {
     text-align: center;
     padding: 4rem 2rem;
-    margin-top: 2rem;
+    margin-top: 6rem;
     background: rgba(44, 25, 15, 0.85);
     border-radius: 15px;
     box-shadow: var(--shadow-lg);
