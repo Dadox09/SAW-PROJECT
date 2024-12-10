@@ -5,9 +5,11 @@ require_once '../config/db_connect.php';
 
 if (isset($_POST['submit'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING);
-    $last_name = filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_STRING);
+    $first_name = htmlspecialchars(trim($_POST['first_name']), ENT_QUOTES, 'UTF-8');
+    $last_name = htmlspecialchars(trim($_POST['last_name']), ENT_QUOTES, 'UTF-8');
+    $username = htmlspecialchars(trim($_POST['username']), ENT_QUOTES, 'UTF-8');
     $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
+    
 
     if (!$email || !$password || !$first_name || !$last_name) {
         $_SESSION['error'] = "Tutti i campi sono obbligatori";
@@ -23,8 +25,8 @@ if (isset($_POST['submit'])) {
         $user = $stmt->fetch();
 
         if ($user === false) {
-            $stmt = $pdo->prepare("INSERT INTO users (email, password, first_name, last_name) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$email, password_hash($password, PASSWORD_DEFAULT), $first_name, $last_name]);
+            $stmt = $pdo->prepare("INSERT INTO users (username, email, password, first_name, last_name) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$username, $email, password_hash($password, PASSWORD_DEFAULT), $first_name, $last_name]);
             $_SESSION['success'] = "Utente registrato con successo";
             header('Location: ../pages/formRegistration.php');
             exit;

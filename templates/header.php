@@ -2,6 +2,7 @@
 session_start();
 require_once __DIR__ . '/../config/config.php';
 ?>
+
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/navbar.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/main.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/layout/home.css">
@@ -37,7 +38,7 @@ require_once __DIR__ . '/../config/config.php';
                         Carrello
                     </a>
                 </li>
-                <?php if (!isset($_SESSION['username'])): ?>
+                <?php if (!isset($_SESSION['user_id'])): ?>
                     <li class="navbar-item">
                         <a href="<?php echo BASE_URL; ?>/pages/formLogin.php" class="navbar-button">Accedi</a>
                     </li>

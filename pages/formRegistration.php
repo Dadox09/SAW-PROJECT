@@ -47,6 +47,14 @@ include '../templates/header.php';
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
+                    <input type="text" name="username" id="username" placeholder="Il tuo username" required>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
                     <input type="email" name="email" id="email" placeholder="La tua email" required>
                 </div>
             </div>

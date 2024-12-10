@@ -4,14 +4,14 @@
     /* Typography */
     --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-    /* Colors */
-    --primary: #3b82f6;
-    --primary-dark: #2563eb;
-    --primary-light: #60a5fa;
-    --secondary: #10b981;
-    --accent: #8b5cf6;
-    --accent-dark: #7c3aed;
-    --accent-super-dark: #5f14d6;
+    /* Colors Palette*/
+    --primary: #808080; /* Gray */
+    --primary-dark: #666666; /* Dark Gray */
+    --primary-light: #999999; /* Light Gray */
+    --secondary: #663300; /* Dark Brown */
+    --accent: #996633; /* Medium Brown */
+    --accent-dark: #cc9966; /* Light Brown */
+    --accent-super-dark: #663300; /* Dark Brown */    
     --dark: #1f2937;
     --gray-dark: #374151;
     --gray: #6b7280;
@@ -44,7 +44,7 @@
 }
 
 body {
-    background: linear-gradient(135deg,var(--white), var(--gray-light));
+    background-color: var(--secondary);
     margin: 0;
     padding: 0;
     font-family: var(--font-family);

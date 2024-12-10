@@ -25,6 +25,8 @@ if (isset($_POST['submit'])) {
             $_SESSION['is_admin'] = $user['is_admin'];
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name'] = $user['last_name'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['username'] = $user['username'];
             
             header('Location: ' . BASE_URL);
             exit;
