@@ -10,8 +10,8 @@
 
     <div class="main-content">
         <section class="welcome-section">
-            <h1>Benvenuti a Coccole e Croissant</h1>
-            <p>Dove il lusso incontra il comfort  </p>
+            <h1>Coccole e Croissant</h1>
+            <p>Scopri il lusso del comfort nel cuore della città. Prenota ora il tuo soggiorno indimenticabile.</p>
             
             <?php
             if (isset($_SESSION['error'])) {
@@ -26,22 +26,23 @@
             
             <form action="auth/process_booking.php" method="POST" class="booking-form">
                 <div class="booking-form-group">
-                    <label for="check_in">Data Check-in</label>
-                    <input type="text" id="check_in" name="check_in" required class="datepicker">
+                    <label for="check_in">Check-in</label>
+                    <input type="text" id="check_in" name="check_in" required class="datepicker" placeholder="Seleziona data">
                 </div>
                 <div class="booking-form-group">
-                    <label for="check_out">Data Check-out</label>
-                    <input type="text" id="check_out" name="check_out" required class="datepicker">
+                    <label for="check_out">Check-out</label>
+                    <input type="text" id="check_out" name="check_out" required class="datepicker" placeholder="Seleziona data">
                 </div>
                 <div class="booking-form-group">
-                    <label for="guests">Numero di ospiti</label>
+                    <label for="guests">Ospiti</label>
                     <select id="guests" name="guests" required>
+                        <option value="" disabled selected>Seleziona numero ospiti</option>
                         <?php for($i = 1; $i <= 10; $i++): ?>
                             <option value="<?php echo $i; ?>"><?php echo $i; ?> <?php echo $i == 1 ? 'ospite' : 'ospiti'; ?></option>
                         <?php endfor; ?>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">Prenota ora</button>
+                <button type="submit" class="submit-btn">Verifica disponibilità</button>
             </form>
         </section>
 

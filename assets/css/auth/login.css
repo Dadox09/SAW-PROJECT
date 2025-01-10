@@ -4,14 +4,14 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background-color: var(--secondary);
+    background-color: #ffffff;
 }
 
 .login-card {
-    background: var(--white);
+    background: #ffffff;
     padding: 2.5rem;
     border-radius: 1rem;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
     animation: fadeIn 0.5s ease-out;
@@ -24,18 +24,18 @@
 
 .login-header i {
     font-size: 4rem;
-    color: var(--primary);
+    color: #2c190f;
     margin-bottom: 1rem;
 }
 
 .login-header h1 {
     font-size: 2rem;
-    color: var(--gray-dark);
+    color: #374151;
     margin: 0.5rem 0;
 }
 
 .login-header p {
-    color: var(--gray);
+    color: #6b7280;
     margin: 0;
 }
 
@@ -51,19 +51,19 @@
     position: relative;
     display: flex;
     align-items: center;
-    background: var(--gray-light);
+    background: #f3f4f6;
     border-radius: 0.5rem;
     padding: 0.75rem 1rem;
     transition: all 0.3s ease;
 }
 
 .input-group:focus-within {
-    background: var(--white);
-    box-shadow: 0 0 0 2px var(--primary);
+    background: #ffffff;
+    box-shadow: 0 0 0 2px #2c190f;
 }
 
 .input-group i {
-    color: var(--gray);
+    color: #6b7280;
     font-size: 1.1rem;
     margin-right: 0.75rem;
 }
@@ -74,12 +74,12 @@
     background: none;
     outline: none;
     padding: 0;
-    color: var(--gray-dark);
+    color: #374151;
     font-size: 1rem;
 }
 
 .input-group input::placeholder {
-    color: var(--gray);
+    color: #6b7280;
 }
 
 .toggle-password {
@@ -90,14 +90,14 @@
 }
 
 .toggle-password:hover {
-    color: var(--primary);
+    color: #2c190f;
 }
 
 .login-button {
     width: 100%;
     padding: 1rem;
-    background: var(--primary);
-    color: var(--white);
+    background: #2c190f;
+    color: #ffffff;
     border: none;
     border-radius: 0.5rem;
     font-size: 1rem;
@@ -111,7 +111,7 @@
 }
 
 .login-button:hover {
-    background: var(--primary-dark);
+    background: #1a0f09;
     transform: translateY(-1px);
 }
 
@@ -127,18 +127,18 @@
 .login-footer {
     text-align: center;
     margin-top: 2rem;
-    color: var(--gray);
+    color: #6b7280;
 }
 
 .login-footer a {
-    color: var(--primary);
+    color: #2c190f;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .login-footer a:hover {
-    color: var(--primary-dark);
+    color: #1a0f09;
 }
 
 .error-message {
