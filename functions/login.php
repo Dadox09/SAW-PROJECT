@@ -5,7 +5,7 @@ require_once '../config/db_connect.php';
 
 if (isset($_POST['submit'])) {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $password = htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
+    $password = htmlspecialchars($_POST['pass'], ENT_QUOTES, 'UTF-8');
 
     if (!$email || !$password) {
         $_SESSION['error'] = "Tutti i campi sono obbligatori";
@@ -23,10 +23,9 @@ if (isset($_POST['submit'])) {
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['is_admin'] = $user['is_admin'];
-            $_SESSION['first_name'] = $user['first_name'];
-            $_SESSION['last_name'] = $user['last_name'];
+            $_SESSION['firstname'] = $user['first_name'];
+            $_SESSION['lastname'] = $user['last_name'];
             $_SESSION['email'] = $user['email'];
-            $_SESSION['username'] = $user['username'];
             
             header('Location: ' . BASE_URL);
             exit;

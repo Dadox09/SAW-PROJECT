@@ -50,7 +50,7 @@ require_once __DIR__ . '/../config/config.php';
                     </a>
                 </li>
                 <li class="navbar-item" role="none">
-                    <a href="<?php echo BASE_URL; ?>/auth/logout.php" class="navbar-link" role="menuitem">
+                    <a href="<?php echo BASE_URL; ?>/functions/logout.php" class="navbar-link" role="menuitem">
                         <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
                         <span>Esci</span>
                     </a>

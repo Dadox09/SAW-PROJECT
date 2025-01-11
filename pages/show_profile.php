@@ -13,7 +13,7 @@
     <div class="profile-content">
         <div class="profile-header">
             <i class="fas fa-user-circle profile-icon"></i>
-            <h1>Benvenuto, <?php echo htmlspecialchars($_SESSION['first_name']); ?>!</h1>
+            <h1>Benvenuto, <?php echo htmlspecialchars($_SESSION['firstname']); ?>!</h1>
             <p class="profile-subtitle">Gestisci il tuo profilo e le impostazioni dell'account</p>
         </div>
         
@@ -39,7 +39,7 @@
                         <input type="text" 
                                name="first_name" 
                                id="first_name" 
-                               value="<?php echo htmlspecialchars($_SESSION['first_name']); ?>"
+                               value="<?php echo htmlspecialchars($_SESSION['firstname']); ?>"
                                required
                                pattern="[A-Za-z\s]+"
                                title="Il nome deve contenere solo lettere e spazi"
@@ -52,7 +52,7 @@
                         <input type="text" 
                                name="last_name" 
                                id="last_name" 
-                               value="<?php echo htmlspecialchars($_SESSION['last_name']); ?>"
+                               value="<?php echo htmlspecialchars($_SESSION['lastname']); ?>"
                                required
                                pattern="[A-Za-z\s]+"
                                title="Il cognome deve contenere solo lettere e spazi"

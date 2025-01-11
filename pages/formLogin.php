@@ -25,7 +25,7 @@ include '../templates/header.php';
         }
         ?>
 
-        <form action="<?php echo BASE_URL; ?>/auth/login.php" method="post" class="login-form">
+        <form action="<?php echo BASE_URL; ?>/functions/login.php" method="post" class="login-form">
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
@@ -36,7 +36,7 @@ include '../templates/header.php';
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" id="password" placeholder="La tua password" required>
+                    <input type="password" name="pass" id="password" placeholder="La tua password" required>
                     <i class="fas fa-eye toggle-password" id="togglePassword"></i>
                 </div>
             </div>

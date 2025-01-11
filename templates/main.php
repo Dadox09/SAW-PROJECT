@@ -14,7 +14,7 @@
             }
             ?>
             
-            <form action="auth/process_booking.php" method="POST" class="booking-form">
+            <form action="<?php echo BASE_URL; ?>/functions/process_booking.php" method="POST" class="booking-form">
                 <div class="booking-form-group">
                     <label for="check_in">Check-in</label>
                     <input type="text" id="check_in" name="check_in" required class="datepicker" placeholder="Seleziona data">

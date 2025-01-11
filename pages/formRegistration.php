@@ -29,25 +29,18 @@ include '../templates/header.php';
             }
         ?>
 
-        <form action="<?php echo BASE_URL; ?>/auth/registration.php" method="post" class="registration-form">
+        <form action="<?php echo BASE_URL; ?>/functions/registration.php" method="post" class="registration-form">
             <div class="form-group">
                 <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="text" name="first_name" id="first_name" placeholder="Il tuo nome" required>
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="firstname" id="first_name" placeholder="Il tuo nome" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="text" name="last_name" id="last_name" placeholder="Il tuo cognome" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="input-group">
-                    <i class="fas fa-envelope"></i>
-                    <input type="text" name="username" id="username" placeholder="Il tuo username" required>
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="lastname" id="last_name" placeholder="Il tuo cognome" required>
                 </div>
             </div>
 
@@ -62,7 +55,15 @@ include '../templates/header.php';
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
-                    <input type="password" name="password" id="password" placeholder="La tua password" required>
+                    <input type="password" name="pass" id="password" placeholder="La tua password" required>
+                    <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="confirm" id="confirm_password" placeholder="Conferma la tua password" required>
                     <i class="fas fa-eye toggle-password" id="togglePassword"></i>
                 </div>
             </div>
