@@ -51,9 +51,9 @@
 .booking-form-group input:focus,
 .booking-form-group select:focus {
     outline: none;
-    border-color: var(--color-desert-sun);
+    border-color: var(--color-dark);
     background: var(--color-cream);
-    box-shadow: 0 0 0 4px rgba(196, 174, 120, 0.1);
+    box-shadow: 0 0 0 4px var(--color-shadow);
 }
 
 .booking-form-group input::placeholder {
@@ -63,7 +63,7 @@
 
 .submit-btn {
     grid-column: 1 / -1;
-    background: var(--color-desert-sun);
+    background: var(--color-dark);
     color: var(--color-cream);
     padding: 1rem 2rem;
     border: none;

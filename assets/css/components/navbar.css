@@ -36,7 +36,7 @@
 
 .navbar-brand i {
     font-size: 1.75rem;
-    color: var(--color-desert-sun);
+    color: var(--color-dark);
     transition: var(--transition);
 }
 
@@ -81,13 +81,13 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background: var(--color-desert-sun);
+    background: var(--color-dark);
     transition: var(--transition);
     transform: translateX(-50%);
 }
 
 .navbar-link:hover {
-    color: var(--color-desert-sun);
+    color: var(--color-dark);
 }
 
 .navbar-link:hover::after {
@@ -96,13 +96,13 @@
 
 .navbar-link i {
     font-size: 1.2rem;
-    color: var(--color-desert-sun);
+    color: var(--color-dark);
     transition: var(--transition);
 }
 
 /* Action Button */
 .navbar-button {
-    background: var(--color-desert-sun);
+    background: var(--color-dark);
     color: var(--color-cream);
     padding: 0.75rem 1.5rem;
     border-radius: var(--radius-sm);
@@ -123,7 +123,7 @@
     display: none;
     background: transparent;
     border: none;
-    color: var(--color-desert-sun);
+    color: var(--color-dark);
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.5rem;

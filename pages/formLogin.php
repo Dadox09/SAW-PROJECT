@@ -25,7 +25,9 @@ include '../templates/header.php';
         }
         ?>
 
-        <form action="<?php echo BASE_URL; ?>/functions/login.php" method="post" class="login-form">
+        <div id="login-message"></div>
+
+        <form action="<?php echo BASE_URL; ?>/functions/login.php" method="post" class="login-form" id="login-form">
             <div class="form-group">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
@@ -54,4 +56,5 @@ include '../templates/header.php';
 </div>
 
 <script src="../assets/js/auth/auth.js"></script>
+<script src="../assets/js/auth/login.js"></script>
 <?php include '../templates/footer.php'; ?>

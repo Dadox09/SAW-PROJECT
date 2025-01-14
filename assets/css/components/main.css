@@ -3,7 +3,6 @@
     /* Colors */
     --color-cream: #f6eee0;
     --color-peach: #e4b7a0;
-    --color-desert-sun: #6e402e;
     --color-coral: #74493c;
     --color-dark: #4d3931;
 
@@ -59,7 +58,7 @@ body {
     text-align: center;
     padding: 4rem 3rem;
     margin-top: 6rem;
-    background: var(--color-desert-sun); 
+    background: var(--color-dark); 
     border-radius: 25px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
@@ -100,7 +99,7 @@ body {
 }
 
 .feature-card {
-    background: var(--color-desert-sun);
+    background: var(--color-dark);
     padding: 2rem;
     border-radius: 15px;
     text-align: center;

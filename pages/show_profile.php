@@ -31,7 +31,7 @@
 
             <div id="modify-profile" class="tabcontent" style="display: block;">
                 <h1>Modifica il tuo profilo</h1>
-                <form action="../auth/update_profile.php" method="post" class="profile-form" id="profile-form">
+                <form action="<?php echo BASE_URL; ?>/functions/update_profile.php" method="post" class="profile-form" id="profile-form">
                     <div class="form-group">
                         <label for="first_name">
                             <i class="fas fa-user-edit"></i> Nome:
@@ -69,6 +69,7 @@
                                required
                                placeholder="La tua email">
                     </div>
+                    <div id="profile-message" class="message-container"></div>
                     <button type="submit" name="submit" class="profile-button">
                         <i class="fas fa-save"></i>
                         <span>Salva Modifiche</span>
@@ -78,7 +79,7 @@
 
             <div id="modify-password" class="tabcontent" style="display: none;">
                 <h1>Modifica la password</h1>
-                <form action="../auth/update_password.php" method="post" class="profile-form" id="password-form">
+                <form action="<?php echo BASE_URL; ?>/functions/update_password.php" method="post" class="profile-form" id="password-form">
                     <div class="form-group">
                         <label for="current_password">
                             <i class="fas fa-key"></i> Password Attuale:
@@ -99,8 +100,6 @@
                                id="new_password"
                                required
                                minlength="8"
-                               pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-                               title="La password deve contenere almeno 8 caratteri, inclusi lettere e numeri"
                                placeholder="Inserisci la nuova password">
                     </div>
                     <div class="form-group">
@@ -114,16 +113,20 @@
                                minlength="8"
                                placeholder="Conferma la nuova password">
                     </div>
+
                     <div class="password-requirements">
-                        <p><i class="fas fa-info-circle"></i> La password deve:</p>
+                        <p>La password deve contenere:</p>
                         <ul>
-                            <li id="length-check"><i class="fas fa-check"></i> Contenere almeno 8 caratteri</li>
-                            <li id="letter-check"><i class="fas fa-check"></i> Contenere almeno una lettera</li>
-                            <li id="number-check"><i class="fas fa-check"></i> Contenere almeno un numero</li>
+                            <li id="length-check">Almeno 8 caratteri</li>
+                            <li id="letter-check">Almeno una lettera</li>
+                            <li id="number-check">Almeno un numero</li>
                         </ul>
                     </div>
+
+                    <div id="password-message"></div>
+
                     <button type="submit" name="submit" class="profile-button">
-                        <i class="fas fa-key"></i>
+                        <i class="fas fa-save"></i>
                         <span>Aggiorna Password</span>
                     </button>
                 </form>
@@ -132,59 +135,6 @@
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Gestione dei tab
-    window.openTab = function(evt, tabName) {
-        var i, tabcontent, tablinks;
-        
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-
-    // Validazione form password
-    const passwordForm = document.getElementById('password-form');
-    const newPasswordInput = document.getElementById('new_password');
-    const confirmPasswordInput = document.getElementById('confirm_password');
-    
-    function updatePasswordRequirements(password) {
-        const lengthCheck = document.getElementById('length-check');
-        const letterCheck = document.getElementById('letter-check');
-        const numberCheck = document.getElementById('number-check');
-        
-        lengthCheck.classList.toggle('valid', password.length >= 8);
-        letterCheck.classList.toggle('valid', /[A-Za-z]/.test(password));
-        numberCheck.classList.toggle('valid', /\d/.test(password));
-    }
-
-    if (newPasswordInput) {
-        newPasswordInput.addEventListener('input', function() {
-            updatePasswordRequirements(this.value);
-        });
-    }
-
-    if (passwordForm) {
-        passwordForm.addEventListener('submit', function(e) {
-            const newPass = newPasswordInput.value;
-            const confirmPass = confirmPasswordInput.value;
-            
-            if (newPass !== confirmPass) {
-                e.preventDefault();
-                alert('Le password non coincidono!');
-            }
-        });
-    }
-});
-</script>
+<script src="../assets/js/profile/update_profile.js"></script>
 
 <?php include '../templates/footer.php'; ?>
