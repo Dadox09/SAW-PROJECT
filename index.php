@@ -8,6 +8,8 @@
 <body>
     <?php require_once 'templates/header.php'; ?>
 
+    <?php require_once 'templates/hero.php'; ?>
+
     <?php require_once 'templates/main.php'; ?>
 
     <?php require_once 'templates/features.php'; ?>

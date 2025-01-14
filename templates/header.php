@@ -3,10 +3,10 @@ session_start();
 require_once __DIR__ . '/../config/config.php';
 ?>
 
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/layout/hero.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/errors/errors.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/navbar.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/main.css">
-<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/layout/home.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/layout/bookings.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">

@@ -1,5 +1,22 @@
 /* Design System Variables */
 :root {
+    /* Colors */
+    --color-cream: #f6eee0;
+    --color-peach: #e4b7a0;
+    --color-desert-sun: #6e402e;
+    --color-coral: #74493c;
+    --color-dark: #4d3931;
+
+    --color-text: #4d3931;
+
+    --color-shadow: rgba(0, 0, 0, 0.5);
+
+    /* Border Radius */
+    --radius-xs: 0.25rem;
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
 
     /* Typography */
     --font-family: 'Poppins', sans-serif;
@@ -13,8 +30,6 @@
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
-
-
 }
 
 * {
@@ -27,12 +42,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-family);
-    background: url('../../images/chicco.webp');
+    background-color: var(--color-cream);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
-    color: #ffffff;
+    color: var(--color-dark);
 }
 
 .main-content {
@@ -44,20 +59,20 @@ body {
     text-align: center;
     padding: 4rem 3rem;
     margin-top: 6rem;
-    background: rgba(44, 25, 15, 0.92);
+    background: var(--color-desert-sun); 
     border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px);
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-coral);
 }
 
 .welcome-section h1 {
     font-size: 4.5rem;
     margin-bottom: 1.5rem;
-    color: #ffffff;
+    color: var(--color-cream);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-weight: 800;
     letter-spacing: -1px;
@@ -67,7 +82,7 @@ body {
     font-size: 1.4rem;
     line-height: 1.6;
     margin-bottom: 3rem;
-    color: #e6c9a8;
+    color: var(--color-peach);
     font-weight: 300;
     max-width: 800px;
     margin-left: auto;
@@ -85,32 +100,34 @@ body {
 }
 
 .feature-card {
-    background: rgba(44, 25, 15, 0.9);
+    background: var(--color-desert-sun);
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-coral);
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: var(--color-peach);
 }
 
 .feature-card i {
     font-size: 2.5rem;
-    color: #ffffff;
+    color: var(--color-cream);
     margin-bottom: 1rem;
 }
 
 .feature-card h3 {
-    color: #ffffff;
+    color: var(--color-cream);
     margin-bottom: 1rem;
 }
 
 .feature-card p {
-    color: #ffffff;
+    color: var(--color-peach);
     line-height: 1.5;
 }
 
@@ -153,13 +170,15 @@ body {
     }
 
     .features-grid {
-        gap: 1.5rem;
-        padding: 1rem;
+        padding: var(--spacing-md);
+        gap: var(--spacing-lg);
+        grid-template-columns: 1fr;
     }
 
     .feature-card {
         flex: 0 1 calc(100% - 2rem);
         margin: 0 1rem;
+        padding: 1.5rem;
     }
 }
 
