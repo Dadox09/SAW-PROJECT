@@ -30,7 +30,7 @@ require_once __DIR__ . '/../config/config.php';
                 </a>
             </li>
             <li class="navbar-item" role="none">
-                <a href="<?php echo BASE_URL; ?>/products" class="navbar-link" role="menuitem" <?php echo (strpos($_SERVER['REQUEST_URI'], '/products') !== false) ? 'aria-current="page"' : ''; ?>>
+                <a href="<?php echo BASE_URL; ?>/pages/products.php" class="navbar-link" role="menuitem" <?php echo (strpos($_SERVER['REQUEST_URI'], '/products') !== false) ? 'aria-current="page"' : ''; ?>>
                     <i class="fas fa-box" aria-hidden="true"></i>
                     <span>Prodotti</span>
                 </a>
