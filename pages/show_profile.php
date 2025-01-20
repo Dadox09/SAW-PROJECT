@@ -41,7 +41,6 @@
                                id="first_name" 
                                value="<?php echo htmlspecialchars($_SESSION['firstname']); ?>"
                                required
-                               pattern="[A-Za-z\s]+"
                                title="Il nome deve contenere solo lettere e spazi"
                                placeholder="Inserisci il tuo nome">
                     </div>
@@ -54,7 +53,6 @@
                                id="last_name" 
                                value="<?php echo htmlspecialchars($_SESSION['lastname']); ?>"
                                required
-                               pattern="[A-Za-z\s]+"
                                title="Il cognome deve contenere solo lettere e spazi"
                                placeholder="Inserisci il tuo cognome">
                     </div>

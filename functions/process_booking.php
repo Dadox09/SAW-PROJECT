@@ -53,7 +53,7 @@ try {
     if (!isset($_SESSION['user_id'])) {
         echo json_encode([
             'status' => 'error',
-            'message' => "Devi effettuare l'accesso per prenotare"
+            'message' => "Devi effettuare l'accesso per prenotare" . "<a href='" . BASE_URL . "/pages/formLogin.php'>Accedi ora</a>"
         ]);
         exit;
     }

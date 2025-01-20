@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content" id="main-content">
         <section class="welcome-section">
             <h1>Prenota Ora</h1>
             <p>Scopri il lusso del comfort nel cuore della città. Prenota ora il tuo soggiorno indimenticabile.</p>
