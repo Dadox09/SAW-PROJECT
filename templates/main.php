@@ -2,26 +2,20 @@
         <section class="welcome-section">
             <h1>Prenota Ora</h1>
             <p>Scopri il lusso del comfort nel cuore della città. Prenota ora il tuo soggiorno indimenticabile.</p>
-            
-            <?php
-            if (isset($_SESSION['error'])) {
-                echo '<div class="error-message">' . $_SESSION['error'] . '</div>';
-                unset($_SESSION['error']);
-            }
-            if (isset($_SESSION['success'])) {
-                echo '<div class="success-message">' . $_SESSION['success'] . '</div>';
-                unset($_SESSION['success']);
-            }
-            ?>
-            
-            <form action="<?php echo BASE_URL; ?>/functions/process_booking.php" method="POST" class="booking-form">
+
+            <div id="booking-message"></div>
+
+
+            <form action="<?php echo BASE_URL; ?>/functions/process_booking.php" method="POST" class="booking-form" id="booking-form">
+
+
                 <div class="booking-form-group">
                     <label for="check_in">Check-in</label>
-                    <input type="text" id="check_in" name="check_in" required class="datepicker" placeholder="Seleziona data">
+                    <input type="date" id="check_in" name="check_in"  placeholder="Seleziona data" required>
                 </div>
                 <div class="booking-form-group">
                     <label for="check_out">Check-out</label>
-                    <input type="text" id="check_out" name="check_out" required class="datepicker" placeholder="Seleziona data">
+                    <input type="date" id="check_out" name="check_out"  placeholder="Seleziona data" required>
                 </div>
                 <div class="booking-form-group">
                     <label for="guests">Ospiti</label>
@@ -32,7 +26,25 @@
                         <?php endfor; ?>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">Verifica disponibilità</button>
+                <button type="submit" class="submit-btn">Prenota</button>
             </form>
         </section>
+</div>
+
+<div class="features-grid">
+    <div class="feature-card">
+        <i class="fas fa-mug-hot"></i>
+        <h3>Cioccolata Artigianale</h3>
+        <p>Degusta la nostra cioccolata calda preparata secondo ricette tradizionali</p>
+    </div>
+    <div class="feature-card">
+        <i class="fas fa-bed"></i>
+        <h3>Camere di Lusso</h3>
+        <p>Rilassati nelle nostre suite arredate con eleganza e comfort</p>
+    </div>
+    <div class="feature-card">
+        <i class="fas fa-spa"></i>
+        <h3>Area Benessere</h3>
+        <p>Goditi i nostri trattamenti al cioccolato nel centro benessere</p>
+    </div>
 </div>

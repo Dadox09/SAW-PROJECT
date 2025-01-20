@@ -3,8 +3,13 @@ session_start();
 require_once '../config/config.php';
 require_once '../config/db_connect.php';
 
+header('Content-Type: application/json');
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ' . BASE_URL);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Metodo non consentito'
+    ]);
     exit;
 }
 
@@ -14,8 +19,10 @@ $guests = $_POST['guests'] ?? '';
 
 // Validate inputs
 if (!$check_in || !$check_out || !$guests) {
-    $_SESSION['error'] = "Tutti i campi sono obbligatori";
-    header('Location: ' . BASE_URL);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Tutti i campi sono obbligatori'
+    ]);
     exit;
 }
 
@@ -25,14 +32,18 @@ $check_out_date = new DateTime($check_out);
 $today = new DateTime();
 
 if ($check_in_date < $today) {
-    $_SESSION['error'] = "La data di check-in non può essere nel passato";
-    header('Location: ' . BASE_URL);
+    echo json_encode([
+        'status' => 'error',
+        'message' => "La data di check-in non può essere nel passato"
+    ]);
     exit;
 }
 
 if ($check_out_date <= $check_in_date) {
-    $_SESSION['error'] = "La data di check-out deve essere successiva al check-in";
-    header('Location: ' . BASE_URL);
+    echo json_encode([
+        'status' => 'error',
+        'message' => "La data di check-out deve essere successiva al check-in"
+    ]);
     exit;
 }
 
@@ -40,8 +51,10 @@ try {
 
     // Check if user is logged in
     if (!isset($_SESSION['user_id'])) {
-        $_SESSION['error'] = "Devi effettuare l'accesso per prenotare";
-        header('Location: ' . BASE_URL . '/pages/formLogin.php');
+        echo json_encode([
+            'status' => 'error',
+            'message' => "Devi effettuare l'accesso per prenotare"
+        ]);
         exit;
     }
 
@@ -53,16 +66,20 @@ try {
     $result = $stmt->execute([$user_id, $check_in, $check_out, $guests]);
     
     if ($result) {
-        $_SESSION['success'] = "Prenotazione effettuata con successo!";
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'Prenotazione effettuata con successo!',
+            'redirect' => BASE_URL
+        ]);
+        exit;
     } else {
         throw new Exception("Errore durante la prenotazione");
     }
     
-    header('Location: ' . BASE_URL);
-    exit;
-
 } catch (Exception $e) {
-    $_SESSION['error'] = "Si è verificato un errore: " . $e->getMessage();
-    header('Location: ' . BASE_URL);
+    echo json_encode([
+        'status' => 'error',
+        'message' => "Si è verificato un errore: " . $e->getMessage()
+    ]);
     exit;
 }

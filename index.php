@@ -12,8 +12,6 @@
 
     <?php require_once 'templates/main.php'; ?>
 
-    <?php require_once 'templates/features.php'; ?>
-
     <?php require_once 'templates/footer.php'; ?>
 </body>
 </html>

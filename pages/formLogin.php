@@ -17,14 +17,7 @@ include '../templates/header.php';
             <h1>Benvenuto</h1>
             <p>Accedi al tuo account</p>
         </div>
-
-        <?php
-        if (isset($_SESSION['error'])) {
-            echo '<div class="error-message"><i class="fas fa-exclamation-circle"></i>' . $_SESSION['error'] . '</div>';
-            unset($_SESSION['error']);
-        }
-        ?>
-
+        
         <div id="login-message"></div>
 
         <form action="<?php echo BASE_URL; ?>/functions/login.php" method="post" class="login-form" id="login-form">
