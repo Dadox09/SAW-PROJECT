@@ -1,12 +1,17 @@
 <?php
-// Carica le variabili d'ambiente dal file .env
-$env = parse_ini_file(__DIR__ . '/../.env');
 
 // Definisce le costanti del database usando le variabili d'ambiente
-define('DB_HOST', $env['DB_HOST']);
-define('DB_USER', $env['DB_USER']);
-define('DB_PASS', $env['DB_PASS']);
-define('DB_NAME', $env['DB_NAME']);
+if($_SERVER['HTTP_HOST'] === 'localhost') {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'sawproject');
+    } else {
+        define('DB_HOST', 'localhost');
+        define('DB_USER', 's5470839');
+        define('DB_PASS', 'SawPieDaddo');
+        define('DB_NAME', 's5470839');
+}
 
 function connectDB() {
     try {

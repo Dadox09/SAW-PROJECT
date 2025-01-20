@@ -1,6 +1,9 @@
-<?php
-include '../templates/header.php';
-?>
+<?php include '../templates/header.php'; ?>
+
+
+<!-- TO DO: PRODOTTI DA DB E NON DA JS-->
+
+
 
 <link rel="stylesheet" href="../assets/css/pages/products.css">
 
@@ -32,13 +35,6 @@ include '../templates/header.php';
     </div>
 </div>
 
-<div id="product-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="modal-body">
-        </div>
-    </div>
-</div>
 
 <script src="../assets/js/products/products.js"></script>
 

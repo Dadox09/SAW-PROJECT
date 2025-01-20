@@ -6,6 +6,7 @@
     <title>Coccole e Croissant B&B </title>
 </head>
 <body>
+
     <?php require_once 'templates/header.php'; ?>
 
     <?php require_once 'templates/hero.php'; ?>
