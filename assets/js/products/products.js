@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Elementi DOM
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
     const categoryFilter = document.getElementById('category-filter');
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalContent = modal.querySelector('.modal-body');
     const closeModal = modal.querySelector('.close-modal');
 
-    // Carrello
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let cartBadge = document.createElement('div');
     cartBadge.className = 'cart-badge';
@@ -88,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // Funzione per aggiornare la griglia dei prodotti
+
     function updateProductsGrid() {
         productsGrid.innerHTML = filteredProducts.map(createProductCard).join('');
         
@@ -102,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Funzione per mostrare i dettagli del prodotto
     function showProductDetails(productId) {
         const product = products.find(p => p.id === productId);
         if (!product) return;
@@ -126,7 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
-        // Aggiungi event listener per il pulsante "Aggiungi al carrello"
         const addToCartBtn = modalContent.querySelector('.add-to-cart');
         addToCartBtn.addEventListener('click', () => addToCart(product));
 
