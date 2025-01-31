@@ -4,9 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryFilter = document.getElementById('category-filter');
     const priceFilter = document.getElementById('price-filter');
     const productsGrid = document.querySelector('.products-grid');
+    const cartCounter = document.querySelector('.counter');
 
     let products = [];
     let filteredProducts = [];
+    let cartItems = 0;
 
     // Funzione per caricare i prodotti dal database
     async function loadProducts() {
@@ -18,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 products = data.products;
                 filteredProducts = [...products];
                 updateProductsGrid();
+                setupCartListeners(); 
 
             } else {
                 console.error('Errore nel caricamento dei prodotti:', data.error);
@@ -28,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
             productsGrid.innerHTML = '<p class="error-message">Errore nel caricamento dei prodotti</p>';
         }
     }
-
 
     function createProductCard(product) {
         return `
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </span>
                         <span class="product-price">€${product.price}</span>
                     </div>
-                    <button class="add-to-cart" id="${product.id}">Aggiungi al carrello</button>
+                    <button class="add-to-cart" data-product-id="${product.id}">Aggiungi al carrello</button>
                 </div>
             </div>
         `;
@@ -53,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateProductsGrid() {
         productsGrid.innerHTML = filteredProducts.map(createProductCard).join('');
+        setupCartListeners(); 
     }
 
     function filterProducts() {

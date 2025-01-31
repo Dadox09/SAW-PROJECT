@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="../assets/css/pages/products.css">
 
 <div class="products-container">
+    <div class="cart-counter" id="cart-counter">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="counter">0</span>
+    </div>
     <div class="search-section">
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Cerca prodotti...">
