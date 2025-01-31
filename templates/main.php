@@ -21,7 +21,9 @@
         </div>
         
         <div class="booking-form-container">
-            <form class="booking-form" action="<?php echo BASE_URL; ?>/functions/process_booking.php" method="POST">
+            <form id="booking-form" class="booking-form" action="<?php echo BASE_URL; ?>/functions/process_booking.php" method="POST">
+                <div class="booking-message"></div>
+                
                 <div class="form-group">
                     <label for="check-in">Data di Check-in</label>
                     <div class="input-with-icon">

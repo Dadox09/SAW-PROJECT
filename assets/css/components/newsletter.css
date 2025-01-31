@@ -36,7 +36,7 @@
 .input-with-icon i {
     position: absolute;
     left: var(--spacing-md);
-    color: var(--color-cream);
+    color: var(--color-dark);
     font-size: 1.2rem;
     z-index: 1;
 }
@@ -46,21 +46,20 @@
     padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-xl) + var(--spacing-xs));
     border: 2px solid var(--color-coral);
     border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--color-cream);
+    background-color: var(--color-cream);
+    color: var(--color-dark);
     font-size: 1rem;
     transition: var(--transition);
 }
 
 .input-with-icon input[type="email"]::placeholder {
-    color: rgba(246, 238, 224, 0.7);
+    color: var(--color-dark);
 }
 
 .input-with-icon input[type="email"]:focus {
     outline: none;
     border-color: var(--color-cream);
     box-shadow: 0 0 8px var(--color-shadow);
-    background: rgba(255, 255, 255, 0.15);
 }
 
 .newsletter-card input[type="email"]:focus {
