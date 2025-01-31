@@ -1,0 +1,89 @@
+.newsletter-card {
+    background: var(--color-dark);
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 8px 16px var(--color-shadow);
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+}
+
+.newsletter-card h1 {
+    color: var(--color-cream);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.newsletter-card p {
+    color: var(--color-cream);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: var(--spacing-md);
+    color: var(--color-cream);
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+.input-with-icon input[type="email"] {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) calc(var(--spacing-xl) + var(--spacing-xs));
+    border: 2px solid var(--color-coral);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-cream);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.input-with-icon input[type="email"]::placeholder {
+    color: rgba(246, 238, 224, 0.7);
+}
+
+.input-with-icon input[type="email"]:focus {
+    outline: none;
+    border-color: var(--color-cream);
+    box-shadow: 0 0 8px var(--color-shadow);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.newsletter-card input[type="email"]:focus {
+    border-color: var(--color-cream);
+    box-shadow: 0 0 8px var(--color-shadow);
+}
+
+.newsletter-card button {
+    background: var(--color-coral);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: var(--transition);
+    width: 100%;
+    margin-top: 1rem;
+
+}
+
+.newsletter-card button:hover {
+    background: var(--color-cream);
+    color: var(--color-dark);
+}

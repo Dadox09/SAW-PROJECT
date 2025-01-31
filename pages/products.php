@@ -12,6 +12,16 @@
         <i class="fas fa-shopping-cart"></i>
         <span class="counter">0</span>
     </div>
+
+    <!-- Overlay del carrello -->
+    <div class="cart-overlay" id="cart-popup">
+        <div class="cart-content">
+            <h2>Carrello</h2>
+            <ul id="cart-items"></ul>
+            <button class="order-btn">Ordina ora</button>
+        </div>
+    </div>
+
     <div class="search-section">
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Cerca prodotti...">
