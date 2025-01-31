@@ -13,6 +13,8 @@
 
     <?php require_once 'templates/main.php'; ?>
 
+    <?php require_once 'templates/aboutus.php'; ?>
+
     <?php require_once 'templates/footer.php'; ?>
 </body>
 </html>

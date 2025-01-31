@@ -6,9 +6,9 @@ require_once __DIR__ . '/../config/config.php';
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/hero.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/errors/errors.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/main.css">
-<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/bookings.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/navbar.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/aboutus.css">
 
 
 <nav class="navbar" role="navigation" aria-label="Menu principale">
