@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$email = htmlspecialchars(trim($_POST['email']), ENT_QUOTES, 'UTF-8');
-$first_name = htmlspecialchars(trim($_POST['firstname']), ENT_QUOTES, 'UTF-8');
-$last_name = htmlspecialchars(trim($_POST['lastname']), ENT_QUOTES, 'UTF-8');
-$password = htmlspecialchars($_POST['pass'], ENT_QUOTES, 'UTF-8');
-$confirm_password = htmlspecialchars($_POST['confirm'], ENT_QUOTES, 'UTF-8');
+$email = trim($_POST['email']);
+$first_name = trim($_POST['firstname']);
+$last_name = trim($_POST['lastname']);
+$password = trim($_POST['pass']);
+$confirm_password = trim($_POST['confirm']);
 
 if (!$email || !$password || !$first_name || !$last_name) {
     echo json_encode([

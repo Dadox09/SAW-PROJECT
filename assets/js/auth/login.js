@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         messageContainer.innerHTML = `<div class="success-message">${data.message}</div>`;
                     }
                     
-                    // Reindirizza dopo un breve delay
                     setTimeout(() => {
                         window.location.href = data.redirect;
                     }, 700);
@@ -26,11 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (messageContainer) {
                         messageContainer.innerHTML = `<div class="error-message">${data.message}</div>`;
                     }
-                    
                 }
             })
             .catch(error => {
-                // Gestione errori di rete
                 if (messageContainer) {
                     messageContainer.innerHTML = `<div class="error-message">Si è verificato un errore durante il login. Riprova più tardi.</div>`;
                 }
