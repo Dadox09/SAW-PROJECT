@@ -34,16 +34,18 @@ if ($password !== $confirm_password) {
     exit;
 }
 
-try {
-    $pdo = connectDB();
+    $conn = connectDB();
     
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
 
-    if ($user === false) {
-        $stmt = $pdo->prepare("INSERT INTO users (email, password, first_name, last_name) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$email, password_hash($password, PASSWORD_DEFAULT), $first_name, $last_name]);
+    if (!$user) {
+        $stmt = $conn->prepare("INSERT INTO users (email, password, first_name, last_name) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $email, password_hash($password, PASSWORD_DEFAULT), $first_name, $last_name);
+        $stmt->execute();
         
         echo json_encode([
             'status' => 'success',
@@ -56,9 +58,3 @@ try {
             'message' => 'Email già registrata'
         ]);
     }
-} catch (PDOException $e) {
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'Errore durante la registrazione. Riprova più tardi.'
-    ]);
-}

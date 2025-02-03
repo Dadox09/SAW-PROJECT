@@ -1,6 +1,5 @@
 <?php
 
-// Definisce le costanti del database usando le variabili d'ambiente
 if($_SERVER['HTTP_HOST'] === 'localhost') {
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
@@ -14,13 +13,9 @@ if($_SERVER['HTTP_HOST'] === 'localhost') {
 }
 
 function connectDB() {
-    try {
-        $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
-        $pdo = new PDO($dsn, DB_USER, DB_PASS);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        return $pdo;
-    } catch(PDOException $e) {
-        die("Connessione fallita: " . $e->getMessage());
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    if(!$conn) {
+        die("Connessione fallita: " . mysqli_connect_error());
     }
+    return $conn;
 }

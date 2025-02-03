@@ -26,12 +26,21 @@ if (!$email || !$password) {
     exit;
 }
 
-try {
-    $pdo = connectDB();
+    $conn = connectDB();
     
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
+    // Debug della connessione
+    if ($conn->connect_error) {
+        die(json_encode([
+            'status' => 'error',
+            'message' => 'Errore di connessione: ' . $conn->connect_error
+        ]));
+    }
+    
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
@@ -56,9 +65,3 @@ try {
             'message' => 'Email o password non validi'
         ]);
     }
-} catch (PDOException $e) {
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'Errore durante il login. Riprova più tardi.'
-    ]);
-}
