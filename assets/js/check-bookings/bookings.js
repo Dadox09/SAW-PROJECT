@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const bookingForm = document.getElementById('booking-form');
-    const messageContainer = document.getElementById('booking-message');
+    const messageContainer = bookingForm.querySelector('.booking-message');
 
     if (bookingForm) {
         bookingForm.addEventListener('submit', function(e) {
