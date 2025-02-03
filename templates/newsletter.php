@@ -1,8 +1,5 @@
-
-
-
 <div class="newsletter-card">
-    <form method="post">
+    <form method="post" action="C:\XAMPP\htdocs\websites\SAW-PROJECT\functions\send_email.php">
         <h1>Iscriviti al Newsletter</h1>
         <p>Inserisci la tua email per ricevere informazioni su nuovi prodotti e offerte. Per te in omaggio anche un buono sconto da 5 euro da utilizzare nel prossimo acquisto!</p>
         <div class="newsletter-group">
@@ -11,6 +8,7 @@
                 <input type="email" name="email" id="email" placeholder="La tua email" required>
             </div>
         </div>
-        <button type="submit" name="submit">Iscriviti ora!</button>
+        <button type="submit" name="submit" id="iscrivitiBtn">Iscriviti ora!</button>
     </form>
 </div>
+<script src="C:\XAMPP\htdocs\websites\SAW-PROJECT\assets\js\newsletter\subscribe.js"></script>

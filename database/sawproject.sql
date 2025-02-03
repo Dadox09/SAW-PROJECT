@@ -1,4 +1,4 @@
--- Creazione del database
+-- Creazione del database (se non esiste già)
 CREATE DATABASE IF NOT EXISTS sawproject;
 USE sawproject;
 
@@ -12,15 +12,15 @@ CREATE TABLE IF NOT EXISTS users (
     last_name VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    is_admin BOOLEAN DEFAULT FALSE
+    is_admin BOOLEAN DEFAULT FALSE,
+    newsletter_subscribed BOOLEAN DEFAULT FALSE -- Nuovo campo per l'iscrizione alla newsletter
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Indici per ottimizzare le ricerche
-CREATE INDEX idx_email ON users(email);
-CREATE INDEX idx_username ON users(username);
+CREATE INDEX IF NOT EXISTS idx_email ON users(email); 
+CREATE INDEX IF NOT EXISTS idx_username ON users(username); 
 
-
--- Tabella prenotazioni
+-- Tabella prenotazioni 
 CREATE TABLE IF NOT EXISTS bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -32,6 +32,6 @@ CREATE TABLE IF NOT EXISTS bookings (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Indici per ottimizzare le ricerche
-CREATE INDEX idx_user_id ON bookings(user_id);
-CREATE INDEX idx_check_in ON bookings(check_in_date);
-CREATE INDEX idx_check_out ON bookings(check_out_date);
+CREATE INDEX IF NOT EXISTS idx_user_id ON bookings(user_id); 
+CREATE INDEX IF NOT EXISTS idx_check_in ON bookings(check_in_date); 
+CREATE INDEX IF NOT EXISTS idx_check_out ON bookings(check_out_date); 
