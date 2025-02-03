@@ -1,51 +1,73 @@
 <?php
 session_start();
 include '../config/db_connect.php';
+header('Content-Type: application/json');
 
 if (!isset($_SESSION['user_id'])) {
-    header('Content-Type: application/json');
-    echo json_encode(['status' => 'error', 'message' => 'Utente non autenticato']);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Utente non autenticato'
+    ]);
     exit;
 }
 
-$pdo = connectDB();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if($_SERVER['REQUEST_METHOD'] !== 'POST'){
     header('Content-Type: application/json');
-    
-    $user_id = $_SESSION['user_id'];
-    $email = htmlspecialchars(trim($_POST['email']), ENT_QUOTES, 'UTF-8');
-    $first_name = htmlspecialchars(trim($_POST['firstname']), ENT_QUOTES, 'UTF-8');
-    $last_name = htmlspecialchars(trim($_POST['lastname']), ENT_QUOTES, 'UTF-8');
-    $errors = [];
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Metodo non consentito'
+    ]);
+    exit;
+}
+
+$conn = connectDB();
+
+$user_id = $_SESSION['user_id'];
+$email = trim($_POST['email']);
+$first_name = trim($_POST['firstname']);
+$last_name = trim($_POST['lastname']);
 
     // Validate inputs
     if (empty($first_name) || !preg_match("/^[A-Za-z\s]+$/", $first_name)) {
-        $errors[] = "Il nome deve contenere solo lettere e spazi";
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Il nome deve contenere solo lettere e spazi'
+        ]);
+        exit;
     }
 
     if (empty($last_name) || !preg_match("/^[A-Za-z\s]+$/", $last_name)) {
-        $errors[] = "Il cognome deve contenere solo lettere e spazi";
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Il cognome deve contenere solo lettere e spazi'
+        ]);
+        exit;
     }
 
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Email non valida";
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Email non valida'
+        ]);
+        exit;
     }
 
-    // Check if email already exists for another user
-    if (!empty($email)) {
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
-        $stmt->execute([$email, $user_id]);
-        if ($stmt->rowCount() > 0) {
-            $errors[] = "Questa email è già in uso";
-        }
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ? AND id != ?");
+    $stmt->bind_param("si", $email, $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Questa email è già in uso'
+        ]);
+        exit;
     }
 
-    // If no errors, proceed with update
-    if (empty($errors)) {
-        try {
-            $stmt = $pdo->prepare("UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?");
-            $result = $stmt->execute([$first_name, $last_name, $email, $user_id]);
+
+            $stmt = $conn->prepare("UPDATE users SET first_name = ?, last_name = ?, email = ? WHERE id = ?");
+            $stmt->bind_param("sssi", $first_name, $last_name, $email, $user_id);
+            $result = $stmt->execute();
 
             if ($result) {
                 // Update session variables
@@ -70,25 +92,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ]);
                 exit;
             }
-        } catch (PDOException $e) {
-            echo json_encode([
-                'status' => 'error',
-                'message' => "Errore del database: " . $e->getMessage()
-            ]);
-            exit;
-        }
-    } else {
-        echo json_encode([
-            'status' => 'error',
-            'message' => implode("<br>", $errors)
-        ]);
-        exit;
-    }
-} else {
-    header('Content-Type: application/json');
-    echo json_encode([
-        'status' => 'error',
-        'message' => 'Metodo non consentito'
-    ]);
-    exit;
-}

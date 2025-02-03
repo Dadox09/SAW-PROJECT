@@ -37,7 +37,7 @@
                             <i class="fas fa-user-edit"></i> Nome:
                         </label>
                         <input type="text" 
-                               name="first_name" 
+                               name="firstname" 
                                id="first_name" 
                                value="<?php echo htmlspecialchars($_SESSION['firstname']); ?>"
                                required
@@ -49,7 +49,7 @@
                             <i class="fas fa-user-edit"></i> Cognome:
                         </label>
                         <input type="text" 
-                               name="last_name" 
+                               name="lastname" 
                                id="last_name" 
                                value="<?php echo htmlspecialchars($_SESSION['lastname']); ?>"
                                required
