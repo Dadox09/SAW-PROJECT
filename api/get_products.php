@@ -7,7 +7,8 @@ try {
     $query = "SELECT * FROM products";
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $products = $stmt->get_result();
+    $products = $products->fetch_all(MYSQLI_ASSOC);
     
     echo json_encode(['success' => true, 'products' => $products]);
 } catch (PDOException $e) {
