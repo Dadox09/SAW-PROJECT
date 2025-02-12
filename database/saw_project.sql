@@ -13,12 +13,10 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     is_admin BOOLEAN DEFAULT FALSE,
-    newsletter_subscribed BOOLEAN DEFAULT FALSE -- Nuovo campo per l'iscrizione alla newsletter
+    newsletter_subscribed BOOLEAN DEFAULT FALSE, -- Nuovo campo per l'iscrizione alla newsletter
+    INDEX idx_email (email),
+    INDEX idx_username (username)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Indici per ottimizzare le ricerche
-CREATE INDEX IF NOT EXISTS idx_email ON users(email); 
-CREATE INDEX IF NOT EXISTS idx_username ON users(username); 
 
 -- Tabella prenotazioni 
 CREATE TABLE IF NOT EXISTS bookings (
@@ -28,10 +26,8 @@ CREATE TABLE IF NOT EXISTS bookings (
     check_out_date DATE NOT NULL,
     guests INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_user_id (user_id),
+    INDEX idx_check_in (check_in_date),
+    INDEX idx_check_out (check_out_date),
     FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Indici per ottimizzare le ricerche
-CREATE INDEX IF NOT EXISTS idx_user_id ON bookings(user_id); 
-CREATE INDEX IF NOT EXISTS idx_check_in ON bookings(check_in_date); 
-CREATE INDEX IF NOT EXISTS idx_check_out ON bookings(check_out_date); 

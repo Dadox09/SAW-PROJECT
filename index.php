@@ -13,7 +13,7 @@
 
     <?php require_once 'templates/main.php'; ?>
 
-    <?php require_once 'templates/newsletter.php'; ?>
+    <?php require_once 'templates/newsletterform.php'; ?>
 
 
     <?php require_once 'templates/aboutus.php'; ?>
