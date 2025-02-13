@@ -10,6 +10,8 @@ require_once __DIR__ . '/../config/config.php';
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/navbar.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/aboutus.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/newsletter.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/ratings.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/carousel.css">
 
 
 <nav class="navbar" role="navigation" aria-label="Menu principale">

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const response = await fetch('../api/get_products.php');
             const data = await response.json();
-            
+
             if (data.success) {
                 products = data.products;
                 filteredProducts = [...products];
@@ -92,12 +92,30 @@ document.addEventListener('DOMContentLoaded', function() {
             cart[productId] = 0;
         }
         cart[productId]++;
-        
+
         // Salva il carrello nel localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
-        
+
         // Aggiorna il contatore
         updateCartCounter();
+    }
+
+    function removeFromCart(productId) {
+        if (cart[productId]) {
+            cart[productId]--;
+            if (cart[productId] === 0) {
+                delete cart[productId];
+            }
+
+            // Salva il carrello nel localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Aggiorna il contatore
+            updateCartCounter();
+
+            // Aggiorna il popup del carrello
+            updateCartPopup();
+        }
     }
 
     // Carica il carrello dal localStorage all'avvio
@@ -109,35 +127,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    
+    function updateCartPopup() {
+        cartItems.innerHTML = '';
+
+        // Itera sugli elementi del carrello
+        Object.keys(cart).forEach(productId => {
+            const product = products.find(p => p.id == productId);
+            if (product) {
+                const quantity = cart[productId];
+
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${product.name}</h4>
+                        <p>Prezzo: €${product.price}</p>
+                        <p>Quantità: ${quantity}</p>
+                    </div>
+                    <button class="remove-item" data-product-id="${productId}">✖</button>
+                `;
+
+                cartItems.appendChild(cartItem);
+            }
+        });
+    }
+
     // Gestione del popup del carrello
     cartCounter.addEventListener('click', function(e) {
         cartPopup.classList.toggle('show');
         if (cartPopup.classList.contains('show')) {
-            cartItems.innerHTML = '';
-        
-            // Itera sugli elementi del carrello
-            Object.keys(cart).forEach(productId => {
-                const product = products.find(p => p.id == productId);
-                if (product) {
-                    const quantity = cart[productId];
-                    
-                    const cartItem = document.createElement('div');
-                    cartItem.classList.add('cart-item');
-                    cartItem.innerHTML = `
-                        <div class="cart-item-info">
-                            <h4>${product.name}</h4>
-                            <p>Prezzo: €${product.price}</p>
-                            <p>Quantità: ${quantity}</p>
-                        </div>
-                        <button class="remove-item" data-product-id="${productId}">✖</button>
-                    `;
-        
-                    cartItems.appendChild(cartItem);
-                }
-            });
+            updateCartPopup();
         }
-        
     });
 
     // Chiudi il popup quando si clicca fuori
@@ -147,7 +167,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
     // Gestione dell'ordine
     orderBtn.addEventListener('click', function() {
         localStorage.removeItem('cart');
@@ -156,18 +175,27 @@ document.addEventListener('DOMContentLoaded', function() {
         cartPopup.classList.remove('show');
     });
 
-    // Event delegation per i pulsanti "Aggiungi al carrello"
+    // Event per i pulsanti "Aggiungi al carrello"
     productsGrid.addEventListener('click', function(e) {
         const button = e.target.closest('.add-to-cart');
         if (button) {
             const productId = button.dataset.productId;
             addToCart(productId);
-            
+
             // Animazione del pulsante
             button.classList.add('added');
             setTimeout(() => {
                 button.classList.remove('added');
             }, 1000);
+        }
+    });
+
+    // Event listener per i pulsanti "Rimuovi dal carrello"
+    cartItems.addEventListener('click', function(e) {
+        const button = e.target.closest('.remove-item');
+        if (button) {
+            const productId = button.dataset.productId;
+            removeFromCart(productId);
         }
     });
 
