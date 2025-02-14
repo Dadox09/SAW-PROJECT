@@ -29,7 +29,7 @@ try {
     require_once __DIR__ . '/newsletter_mailer.php';
     
     $testResult = sendNewsletter(
-        ['pietroravera23@gmail.com'], 
+        ['rizzodavidege@gmail.com'], 
         'Test Newsletter System', 
         '<h1>Test Email</h1><p>Questo è un test del sistema newsletter.</p>'
     );

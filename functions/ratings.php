@@ -5,9 +5,9 @@ require_once dirname(__FILE__) . '/../config/db_connect.php';
 function saveRating($userId, $rating, $comment) {
     $conn = connectDB();
     
-    $userId = mysqli_real_escape_string($conn, $userId);
+    $userId = intval($userId);
     $rating = intval($rating);
-    $comment = mysqli_real_escape_string($conn, $comment);
+    $comment = htmlspecialchars($comment);
     
     // Validazione
     if ($rating < 1 || $rating > 5) {
@@ -25,18 +25,6 @@ function saveRating($userId, $rating, $comment) {
     return $result;
 }
 
-// Funzione per ottenere la media delle recensioni
-function getAverageRating() {
-    $conn = connectDB();
-    
-    $query = "SELECT AVG(rating) as avg_rating FROM ratings";
-    $result = $conn->query($query);
-    $row = $result->fetch_assoc();
-    
-    $avg = round($row['avg_rating'], 1);
-    mysqli_close($conn);
-    return $avg;
-}
 
 // Funzione per mostrare il form delle recensioni
 function displayRatingForm() {

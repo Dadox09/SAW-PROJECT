@@ -2,20 +2,15 @@
 session_start();
 require_once dirname(__FILE__) . '/../config/db_connect.php';
 require_once dirname(__FILE__) . '/ratings.php';
-
-// Funzione per inviare risposta JSON
-function sendJsonResponse($success, $message = '') {
-    header('Content-Type: application/json');
-    echo json_encode([
-        'success' => $success,
-        'message' => $message
-    ]);
-    exit();
-}
+header('Content-Type: application/json');
 
 // Verifica se l'utente è loggato
 if (!isset($_SESSION['user_id'])) {
-    sendJsonResponse(false, 'Devi effettuare il login per lasciare una recensione');
+    echo json_encode([
+        'success' => false,
+        'message' => 'Devi effettuare il login per lasciare una recensione'
+    ]);
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -25,17 +20,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Validazione
     if ($rating < 1 || $rating > 5 || empty($comment)) {
-        sendJsonResponse(false, 'Per favore, inserisci una valutazione valida e un commento');
+        echo json_encode([
+            'success' => false,
+            'message' => 'Per favore, inserisci una valutazione valida e un commento'
+        ]);
+        exit();
     }
     
     // Salva la recensione
     if (saveRating($userId, $rating, $comment)) {
-        sendJsonResponse(true, 'Grazie per la tua recensione!');
+        echo json_encode([
+            'success' => true,
+            'message' => 'Grazie per la tua recensione!'
+        ]);
     } else {
-        sendJsonResponse(false, 'Si è verificato un errore durante il salvataggio della recensione');
+        echo json_encode([
+            'success' => false,
+            'message' => 'Si è verificato un errore durante il salvataggio della recensione'
+        ]);
     }
+} else {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Richiesta non valida'
+    ]);
 }
-
-// Se non è una richiesta POST
-sendJsonResponse(false, 'Richiesta non valida');
 ?>

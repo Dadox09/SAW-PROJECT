@@ -9,10 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const counter = document.querySelector('.counter');
     const orderBtn = document.querySelector('.order-btn');
     const cartItems = document.getElementById('cart-items');
+    const total = document.getElementById('total-price');
 
     let products = [];
     let filteredProducts = [];
-    let cart = {};
+    let cart = [];
 
     // Funzione per caricare i prodotti dal database
     async function loadProducts() {
@@ -83,28 +84,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Gestione del carrello
     function updateCartCounter() {
-        const totalItems = Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         counter.textContent = totalItems;
     }
 
     function addToCart(productId) {
-        if (!cart[productId]) {
-            cart[productId] = 0;
+        const product = products.find(p => p.id == productId);
+        if (product) {
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id: productId, quantity: 1, price: product.price, name: product.name });
+            }
+
+            // Salva il carrello nel localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Aggiorna il contatore
+            updateCartCounter();
         }
-        cart[productId]++;
-
-        // Salva il carrello nel localStorage
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        // Aggiorna il contatore
-        updateCartCounter();
     }
 
     function removeFromCart(productId) {
-        if (cart[productId]) {
-            cart[productId]--;
-            if (cart[productId] === 0) {
-                delete cart[productId];
+        const index = cart.findIndex(item => item.id === productId);
+        if (index !== -1) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+            } else {
+                cart.splice(index, 1);
             }
 
             // Salva il carrello nel localStorage
@@ -131,25 +139,24 @@ document.addEventListener('DOMContentLoaded', function() {
         cartItems.innerHTML = '';
 
         // Itera sugli elementi del carrello
-        Object.keys(cart).forEach(productId => {
-            const product = products.find(p => p.id == productId);
-            if (product) {
-                const quantity = cart[productId];
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerHTML = `
+                <div class="cart-item-info">
+                    <h4>${item.name}</h4>
+                    <p>Prezzo: €${item.price}</p>
+                    <p>Quantità: ${item.quantity}</p>
+                </div>
+                <button class="remove-item" data-product-id="${item.id}">✖</button>
+            `;
 
-                const cartItem = document.createElement('div');
-                cartItem.classList.add('cart-item');
-                cartItem.innerHTML = `
-                    <div class="cart-item-info">
-                        <h4>${product.name}</h4>
-                        <p>Prezzo: €${product.price}</p>
-                        <p>Quantità: ${quantity}</p>
-                    </div>
-                    <button class="remove-item" data-product-id="${productId}">✖</button>
-                `;
-
-                cartItems.appendChild(cartItem);
-            }
+            cartItems.appendChild(cartItem);
         });
+
+        // Calcola e mostra il prezzo totale
+        const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        total.innerHTML = 'Totale: €' + totalPrice.toFixed(2);
     }
 
     // Gestione del popup del carrello
@@ -160,17 +167,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Chiudi il popup quando si clicca fuori
-    document.addEventListener('click', function(e) {
-        if (!cartPopup.contains(e.target) && !cartCounter.contains(e.target)) {
-            cartPopup.classList.remove('show');
-        }
-    });
-
     // Gestione dell'ordine
     orderBtn.addEventListener('click', function() {
         localStorage.removeItem('cart');
-        cart = {};
+        cart = [];
         updateCartCounter();
         cartPopup.classList.remove('show');
     });

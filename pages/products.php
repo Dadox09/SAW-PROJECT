@@ -18,6 +18,7 @@
         <div class="cart-content">
             <h2>Carrello</h2>
             <ul id="cart-items"></ul>
+            <span id="total-price"></span>
             <button class="order-btn">Ordina ora</button>
         </div>
     </div>

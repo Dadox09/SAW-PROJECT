@@ -1,5 +1,5 @@
 
-<div class="booking-container">
+<div class="booking-container" id="main-content">
     <div class="booking-content">
         <div class="booking-info">
             <h2>Prenota il Tuo Soggiorno di Lusso</h2>
