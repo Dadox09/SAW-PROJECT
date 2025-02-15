@@ -18,7 +18,7 @@
     <?php require_once 'templates/aboutus.php'; ?>
 
     <?php require_once 'templates/newsletterform.php'; ?>
-    
+
     <?php require_once 'templates/footer.php'; ?>
 </body>
 </html>

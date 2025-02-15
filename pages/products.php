@@ -46,8 +46,16 @@
         </div>
     </div>
 
+    <div class="order-history-section">
+        <h2>I tuoi ordini</h2>
+        <div id="order-history">
+        </div>
+    </div>
+
     <div class="products-grid">
     </div>
+
+
 </div>
 
 

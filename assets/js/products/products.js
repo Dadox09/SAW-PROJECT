@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
-    const searchButton = document.getElementById('search-button');
     const categoryFilter = document.getElementById('category-filter');
     const priceFilter = document.getElementById('price-filter');
     const productsGrid = document.querySelector('.products-grid');
@@ -14,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let products = [];
     let filteredProducts = [];
     let cart = [];
+    let orderHistory = [];
 
-    // Funzione per caricare i prodotti dal database
     async function loadProducts() {
         try {
             const response = await fetch('../api/get_products.php');
@@ -51,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="product-price">€${product.price}</span>
                     </div>
                     <button class="add-to-cart" data-product-id="${product.id}">
-                        Aggiungi al carrello
+                        Aggiungi all'ordine
                     </button>
                 </div>
             </div>
@@ -82,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProductsGrid();
     }
 
-    // Gestione del carrello
     function updateCartCounter() {
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         counter.textContent = totalItems;
@@ -98,10 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 cart.push({ id: productId, quantity: 1, price: product.price, name: product.name });
             }
 
-            // Salva il carrello nel localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            // Aggiorna il contatore
             updateCartCounter();
         }
     }
@@ -115,18 +111,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 cart.splice(index, 1);
             }
 
-            // Salva il carrello nel localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            // Aggiorna il contatore
             updateCartCounter();
 
-            // Aggiorna il popup del carrello
             updateCartPopup();
         }
     }
 
-    // Carica il carrello dal localStorage all'avvio
     function loadCart() {
         const savedCart = localStorage.getItem('cart');
         if (savedCart) {
@@ -138,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateCartPopup() {
         cartItems.innerHTML = '';
 
-        // Itera sugli elementi del carrello
         cart.forEach(item => {
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
@@ -154,12 +145,10 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItems.appendChild(cartItem);
         });
 
-        // Calcola e mostra il prezzo totale
         const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
         total.innerHTML = 'Totale: €' + totalPrice.toFixed(2);
     }
 
-    // Gestione del popup del carrello
     cartCounter.addEventListener('click', function(e) {
         cartPopup.classList.toggle('show');
         if (cartPopup.classList.contains('show')) {
@@ -167,22 +156,93 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Gestione dell'ordine
-    orderBtn.addEventListener('click', function() {
-        localStorage.removeItem('cart');
+    function loadOrderHistory() {
+        const savedHistory = localStorage.getItem('orderHistory');
+        if (savedHistory) {
+            orderHistory = JSON.parse(savedHistory);
+        }
+    }
+
+    function saveOrder() {
+        if (cart.length === 0) return;
+        
+        const order = {
+            id: Date.now(),
+            date: new Date().toLocaleString(),
+            items: [...cart],
+            total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+        };
+
+        orderHistory.unshift(order); 
+        localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+        
         cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
         updateCartCounter();
+        updateCartPopup();
+        
+        showOrderConfirmation(order);
+        updateOrderHistory();
+    }
+
+    function showOrderConfirmation(order) {
+        const confirmation = document.createElement('div');
+        confirmation.className = 'order-confirmation';
+        confirmation.innerHTML = `
+            <h3>Ordine Completato!</h3>
+            <p>Totale: €${order.total.toFixed(2)}</p>
+            <p>Data: ${order.date}</p>
+        `;
+        document.body.appendChild(confirmation);
+        
+        setTimeout(() => {
+            confirmation.remove();
+        }, 3000);
+    }
+
+    function updateOrderHistory() {
+        const historyContainer = document.getElementById('order-history');
+        if (!historyContainer) return;
+
+        if (orderHistory.length === 0) {
+            historyContainer.innerHTML = '<p>Nessun ordine effettuato</p>';
+            return;
+        }
+
+        historyContainer.innerHTML = orderHistory.map(order => `
+            <div class="order-card">
+                <div class="order-header">
+                    <span class="order-date">${order.date}</span>
+                    <span class="order-total">Totale: €${order.total.toFixed(2)}</span>
+                </div>
+                <div class="order-items">
+                    ${order.items.map(item => `
+                        <div class="order-item">
+                            <span class="item-name">${item.name}</span>
+                            <span class="item-quantity">x${item.quantity}</span>
+                            <span class="item-price">€${(item.price * item.quantity).toFixed(2)}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    orderBtn.addEventListener('click', function() {
+        if (cart.length === 0) {
+            alert('Il carrello è vuoto');
+            return;
+        }
+        saveOrder();
         cartPopup.classList.remove('show');
     });
 
-    // Event per i pulsanti "Aggiungi al carrello"
     productsGrid.addEventListener('click', function(e) {
         const button = e.target.closest('.add-to-cart');
         if (button) {
             const productId = button.dataset.productId;
             addToCart(productId);
 
-            // Animazione del pulsante
             button.classList.add('added');
             setTimeout(() => {
                 button.classList.remove('added');
@@ -190,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Event listener per i pulsanti "Rimuovi dal carrello"
     cartItems.addEventListener('click', function(e) {
         const button = e.target.closest('.remove-item');
         if (button) {
@@ -199,13 +258,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Event listeners per i filtri
     searchInput.addEventListener('input', filterProducts);
-    searchButton.addEventListener('click', filterProducts);
     categoryFilter.addEventListener('change', filterProducts);
     priceFilter.addEventListener('change', filterProducts);
 
-    // Inizializzazione
-    loadCart();
     loadProducts();
+    loadCart();
+    loadOrderHistory();
+    updateOrderHistory();
 });
