@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             button.textContent = 'Iscrizione in corso...';
 
             const formData = new FormData();
+            formData.append('email', email);
             
             // Invia la richiesta al server
             fetch('/websites/SAW-PROJECT/functions/newsletter.php', {
