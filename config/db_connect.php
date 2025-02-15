@@ -1,16 +1,17 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-if($_SERVER['HTTP_HOST'] === 'localhost') {
-    define('DB_HOST', getEnvValue('DB_HOST_local'));
-    define('DB_USER', getEnvValue('DB_USER_local'));
-    define('DB_PASS', getEnvValue('DB_PASS_local'));
-    define('DB_NAME', getEnvValue('DB_NAME_local'));
+if($_SERVER['HTTP_HOST'] === 'localhost') {    
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'sawproject');
+
 } else {
-    define('DB_HOST', getEnvValue('DB_HOST_remote'));
-    define('DB_USER', getEnvValue('DB_USER_remote'));
-    define('DB_PASS', getEnvValue('DB_PASS_remote'));
-    define('DB_NAME', getEnvValue('DB_NAME_remote'));
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 's5470839');
+    define('DB_PASS', 'SawPieDaddo');
+    define('DB_NAME', 's5470839');
 }
 
 function connectDB() {
