@@ -13,20 +13,12 @@
 
     <?php require_once 'templates/main.php'; ?>
 
-
-    <?php require_once 'functions/ratings.php';
-    
-    displayRatingForm();
-    displayRatings();
-    
-    ?>
-
+    <?php require_once 'templates/ratingsform.php'; ?>
 
     <?php require_once 'templates/aboutus.php'; ?>
 
     <?php require_once 'templates/newsletterform.php'; ?>
-
-
+    
     <?php require_once 'templates/footer.php'; ?>
 </body>
 </html>

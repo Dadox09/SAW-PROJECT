@@ -3,7 +3,6 @@ session_start();
 require_once '../config/config.php';
 require_once '../config/db_connect.php';
 
-// Imposta l'header per indicare che la risposta sarà in JSON
 header('Content-Type: application/json');
 
 // Verifica che la richiesta sia POST

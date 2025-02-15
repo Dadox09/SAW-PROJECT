@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rating = isset($_POST['rating']) ? (int)$_POST['rating'] : 0;
     $comment = isset($_POST['comment']) ? trim($_POST['comment']) : '';
     
-    // Validazione
+
     if ($rating < 1 || $rating > 5 || empty($comment)) {
         echo json_encode([
             'success' => false,

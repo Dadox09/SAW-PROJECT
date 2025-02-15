@@ -49,7 +49,6 @@ if ($check_out_date <= $check_in_date) {
 
 try {
 
-    // Check if user is logged in
     if (!isset($_SESSION['user_id'])) {
         echo json_encode([
             'status' => 'error',
@@ -60,10 +59,10 @@ try {
 
     $user_id = $_SESSION['user_id'];
 
-    $pdo = connectDB();
-    // Insert the booking
-    $stmt = $pdo->prepare("INSERT INTO bookings (user_id, check_in_date, check_out_date, guests) VALUES (?, ?, ?, ?)");
-    $result = $stmt->execute([$user_id, $check_in, $check_out, $guests]);
+    $conn = connectDB();
+    $stmt = $conn->prepare("INSERT INTO bookings (user_id, check_in_date, check_out_date, guests) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("isss", $user_id, $check_in, $check_out, $guests);
+    $result = $stmt->execute();
     
     if ($result) {
         echo json_encode([

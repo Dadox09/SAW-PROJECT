@@ -19,19 +19,12 @@ function saveRating($userId, $rating, $comment) {
     
     $stmt = $conn->prepare($query);
     $stmt->bind_param("iis", $userId, $rating, $comment);
-    
     $result = $stmt->execute();
     mysqli_close($conn);
     return $result;
 }
 
 
-// Funzione per mostrare il form delle recensioni
-function displayRatingForm() {
-    include dirname(__FILE__) . '/../templates/ratingsform.php';
-}
-
-// Funzione per visualizzare le recensioni esistenti
 function displayRatings() {
     $conn = connectDB();
     
@@ -67,12 +60,8 @@ function displayRatings() {
             <?php
         }
         echo '</div>';
-    } else {
-        echo '<p>Nessuna recensione disponibile.</p>';
     }
     mysqli_close($conn);
 }
-
-
 
 ?>

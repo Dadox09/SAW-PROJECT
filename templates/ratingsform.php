@@ -1,4 +1,7 @@
+<?php require_once dirname(__FILE__) . '/../functions/ratings.php'; ?>
+
 <div class="rating-form">
+    <div class="rating-message"></div>
     <h3>Lascia una recensione</h3>
     <form action="<?php echo BASE_URL; ?>/functions/submit_ratings.php" method="POST" class="rating-stars">
         <div class="star-rating">
@@ -15,5 +18,7 @@
         <button type="submit" class="btn btn-primary">Invia Recensione</button>
     </form>
 </div>
+
+<?php displayRatings(); ?>
 
 <script src="<?php echo BASE_URL; ?>/assets/js/ratings/ratings.js" defer></script>

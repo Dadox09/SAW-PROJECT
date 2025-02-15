@@ -323,3 +323,16 @@
     font-weight: 600;
     color: #4CAF50;
 }
+
+.remove-item {
+    cursor: pointer;
+    color: #f44336;
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    margin-left: 2rem;
+}
+
+.remove-item:hover {
+    color: #d32f2f;
+}
