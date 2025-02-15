@@ -81,17 +81,30 @@ try {
 
     // Invia la risposta
     echo json_encode($response);
+    exit;
 
 } catch (PDOException $e) {
+    error_log('Database error: ' . $e->getMessage());
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Errore del database: ' . $e->getMessage()
+        'message' => 'Errore del database. Per favore riprova più tardi.'
     ]);
+    exit;
 } catch (Exception $e) {
+    error_log('Application error: ' . $e->getMessage());
     http_response_code(400);
     echo json_encode([
         'success' => false,
         'message' => $e->getMessage()
     ]);
+    exit;
+} catch (Throwable $e) {
+    error_log('Unexpected error: ' . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => 'Errore: ' . $e->getMessage() . ' in ' . $e->getFile() . ' on line ' . $e->getLine()
+    ]);
+    exit;
 }

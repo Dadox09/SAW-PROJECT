@@ -1,3 +1,24 @@
+function showNotification(message, isSuccess) {
+    // Rimuovi notifiche esistenti
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+
+    // Crea l'elemento notifica
+    const notification = document.createElement('div');
+    notification.className = `notification ${isSuccess ? 'success' : 'error'}`;
+    notification.textContent = message;
+
+    // Aggiungi la notifica al DOM
+    document.body.appendChild(notification);
+
+    // Rimuovi la notifica dopo 5 secondi
+    setTimeout(() => {
+        notification.remove();
+    }, 5000);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('newsletterForm');
     
@@ -30,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(data => {
                 if (data.success) {
-                    alert(data.message);
+                    showNotification(data.message, true);
                     form.reset();
                 } else {
                     throw new Error(data.message);
@@ -38,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Errore:', error);
-                alert(error.message || 'Errore durante l\'iscrizione. Riprova più tardi.');
+                showNotification(error.message || 'Errore durante l\'iscrizione. Riprova più tardi.', false);
             })
             .finally(() => {
                 button.disabled = false;

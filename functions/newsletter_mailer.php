@@ -1,13 +1,7 @@
 <?php
-// Verifica se il file autoload.php esiste
-$vendorDir = dirname(dirname(__FILE__));
-$autoloadPath = $vendorDir . '/vendor/autoload.php';
-
-if (!file_exists($autoloadPath)) {
-    throw new Exception('PHPMailer non è installato. Esegui: composer require phpmailer/phpmailer');
-}
-
-require_once $autoloadPath;
+require_once __DIR__ . '/Exception.php';
+require_once __DIR__ . '/SMTP.php';
+require_once __DIR__ . '/PHPMailer.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -49,7 +43,7 @@ function sendNewsletter($recipients, $subject, $message) {
     } catch (Exception $e) {
         return [
             'success' => false,
-            'message' => "Errore nell'invio della mail: " . $e->getMessage()
+            'message' => 'Errore nell\'invio dell\'email: ' . $e->getMessage()
         ];
     }
 }
