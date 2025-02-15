@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+header('Cache-Control: no-cache, must-revalidate');
 
 // Gestione degli errori
 error_reporting(E_ALL);
@@ -8,22 +9,26 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
     throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
 });
 
+
 try {
     // Verifica se è una richiesta POST
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        throw new Exception('Metodo non valido');
+        echo json_encode(['success' => false, 'message' => 'Metodo non valido']);
+        exit;
     }
 
     // Verifica se l'email è stata inviata
     if (!isset($_POST['email']) || empty($_POST['email'])) {
-        throw new Exception('Email richiesta');
+        echo json_encode(['success' => false, 'message' => 'Email mancante']);
+        exit;
     }
 
     $email = trim($_POST['email']);
 
     // Valida l'email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        throw new Exception('Email non valida');
+        echo json_encode(['success' => false, 'message' => 'Email non valida']);
+        exit;
     }
 
     // Connessione al database
@@ -36,12 +41,14 @@ try {
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM newsletter_subscribers WHERE email = ?");
     $stmt->execute([$email]);
     if ($stmt->fetchColumn() > 0) {
-        throw new Exception('Questa email è già iscritta alla newsletter');
+        echo json_encode(['success' => false, 'message' => 'Questa email è già iscritta alla newsletter']);
+        exit;
     }
 
     // Inserisci l'email nel database
     $stmt = $pdo->prepare("INSERT INTO newsletter_subscribers (email) VALUES (?)");
-    $stmt->execute([$email]);
+    $stmt->bindParam(1, $email);
+    $stmt->execute();
 
     // Prepara l'email di benvenuto
     $subject = "Benvenuto nella nostra Newsletter!";
@@ -71,33 +78,24 @@ try {
     require_once __DIR__ . '/newsletter_mailer.php';
     $mailResult = sendNewsletter([$email], $subject, $message);
 
-    // Prepara la risposta
-    $response = [
+
+    // Invia la risposta
+    echo json_encode([
         'success' => true,
         'message' => $mailResult['success'] 
             ? 'Iscrizione completata con successo! Controlla la tua email per il codice sconto.'
             : 'Iscrizione completata, ma non è stato possibile inviare l\'email di conferma: ' . $mailResult['message']
-    ];
 
-    // Invia la risposta
-    echo json_encode($response);
+    ]);
     exit;
 
 } catch (PDOException $e) {
     error_log('Database error: ' . $e->getMessage());
-    http_response_code(500);
-    echo json_encode([
-        'success' => false,
-        'message' => 'Errore del database. Per favore riprova più tardi.'
-    ]);
+    echo json_encode(['success' => false, 'message' => 'Errore del database. Per favore riprova più tardi.']);
     exit;
 } catch (Exception $e) {
     error_log('Application error: ' . $e->getMessage());
-    http_response_code(400);
-    echo json_encode([
-        'success' => false,
-        'message' => $e->getMessage()
-    ]);
+    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
     exit;
 } catch (Throwable $e) {
     error_log('Unexpected error: ' . $e->getMessage());

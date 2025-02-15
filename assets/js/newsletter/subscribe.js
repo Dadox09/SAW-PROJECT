@@ -13,9 +13,13 @@ function showNotification(message, isSuccess) {
     // Aggiungi la notifica al DOM
     document.body.appendChild(notification);
 
+    // Aggiungi classe per l'animazione di entrata
+    setTimeout(() => notification.classList.add('show'), 10);
+
     // Rimuovi la notifica dopo 5 secondi
     setTimeout(() => {
-        notification.remove();
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
     }, 5000);
 }
 
@@ -32,27 +36,24 @@ document.addEventListener('DOMContentLoaded', function() {
             // Disabilita il pulsante durante l'invio
             button.disabled = true;
             button.textContent = 'Iscrizione in corso...';
+
+            const formData = new FormData();
             
             // Invia la richiesta al server
             fetch('/websites/SAW-PROJECT/functions/newsletter.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'email=' + encodeURIComponent(email)
+                body: formData
             })
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(data => {
-                        throw new Error(data.message || 'Errore del server: ' + response.status);
-                    });
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 if (data.success) {
                     showNotification(data.message, true);
                     form.reset();
+                    
+                    // Gestione dati aggiuntivi se presenti
+                    if (data.data && data.data.emailSent === false) {
+                        console.warn('Email di conferma non inviata');
+                    }
                 } else {
                     throw new Error(data.message);
                 }
