@@ -1,19 +1,18 @@
-
     <div class="about-us">
-        <h1>Welcome to Our Chocolate Experience BnB</h1>
-        <h2>Where Every Stay is a Sweet Adventure</h2>
+        <h1>Benvenuti al Nostro B&B Chocolate Experience</h1>
+        <h2>Dove Ogni Soggiorno è un'Avventura Dolce</h2>
         <div class="cards">
             <div class="card">
-                <h3>Our Story</h3>
-                <p>Founded in the heart of chocolate country, our BnB offers a unique blend of luxury and chocolate indulgence.</p>
+                <h3>Location</h3>
+                <p>Via dei Cioccolati 12, 16149 Genova (GE)</p>
             </div>
             <div class="card">
-                <h3>Our Mission</h3>
-                <p>To provide an unforgettable experience that tantalizes your taste buds and soothes your soul.</p>
+                <h3>La Nostra Missione</h3>
+                <p>Offrire un'esperienza indimenticabile che stuzzica le papille gustative e coccola l'anima.</p>
             </div>
             <div class="card">
-                <h3>Our Team</h3>
-                <p>Meet our passionate team of chocolate enthusiasts dedicated to making your stay delightful.</p>
+                <h3>Il Nostro Team</h3>
+                <p>Siamo Pietro e Davide, due ragazzi che amano il cioccolato e l'ospitalità.</p>
             </div>
         </div>
     </div>

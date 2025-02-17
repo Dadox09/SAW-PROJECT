@@ -1,8 +1,12 @@
 
+
+
 <div class="booking-container" id="main-content">
+<h2 class="booking-title">Prenota il Tuo Soggiorno di Lusso</h2>
     <div class="booking-content">
+        
         <div class="booking-info">
-            <h2>Prenota il Tuo Soggiorno di Lusso</h2>
+            
             <p>Lasciati avvolgere dal calore del cioccolato e dalla magia del relax</p>
             <div class="experience-highlights">
                 <div class="highlight">

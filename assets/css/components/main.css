@@ -117,6 +117,13 @@ body {
     font-weight: 500;
 }
 
+.booking-title {
+    color: var(--color-dark);
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
 /* Booking Form */
 .booking-form-container {
     background: white;

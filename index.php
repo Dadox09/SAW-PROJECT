@@ -11,11 +11,13 @@
 
     <?php require_once 'templates/hero.php'; ?>
 
+    <?php require_once 'templates/aboutus.php'; ?>
+
+    <?php require_once 'templates/carousel.php'; ?>
+
     <?php require_once 'templates/main.php'; ?>
 
     <?php require_once 'templates/ratingsform.php'; ?>
-
-    <?php require_once 'templates/aboutus.php'; ?>
 
     <?php require_once 'templates/newsletterform.php'; ?>
 

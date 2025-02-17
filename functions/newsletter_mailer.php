@@ -15,14 +15,14 @@ function sendNewsletter($recipients, $subject, $message) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'pietroravera23@gmail.com';
-        $mail->Password = 'cvrh eugj ylns yqwb';
+        $mail->Username = 'coccoleecroissant@gmail.com';
+        $mail->Password = 'nsgv oszm ferd clue';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
         $mail->CharSet = 'UTF-8';
 
         // Impostazioni del mittente
-        $mail->setFrom('pietroravera23@gmail.com', 'Pietro Ravera');
+        $mail->setFrom('coccoleecroissant@gmail.com', 'CoccoLe e Croissant');
 
         // Aggiunta dei destinatari
         foreach ($recipients as $email) {

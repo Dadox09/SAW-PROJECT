@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formData.append('email', email);
             
             // Invia la richiesta al server
-            fetch('/websites/SAW-PROJECT/functions/newsletter.php', {
+            fetch('functions/newsletter.php', {
                 method: 'POST',
                 body: formData
             })

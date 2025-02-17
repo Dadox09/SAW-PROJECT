@@ -6,15 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const dotsNav = document.querySelector('.carousel-dots');
     const dots = Array.from(dotsNav.children);
 
-    // Imposta la larghezza delle slide
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    slides.forEach((slide, index) => {
-        slide.style.left = slideWidth * index + 'px';
-    });
-
     let currentSlide = 0;
     const totalSlides = slides.length;
     let autoplayInterval;
+
+    // Inizializza le posizioni delle slide
+    slides.forEach((slide, index) => {
+        slide.style.left = `${index * 100}%`;
+    });
 
     // Funzione per muovere il carosello
     function moveToSlide(targetIndex) {
@@ -24,8 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             targetIndex = 0;
         }
 
-        const targetSlide = slides[targetIndex];
-        track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+        track.style.transform = `translateX(-${targetIndex * 100}%)`;
         
         // Aggiorna il dot attivo
         dots.forEach(dot => dot.classList.remove('active'));
@@ -100,6 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoplay();
     });
 
-    // Avvia l'autoplay
+    // Avvia l'autoplay iniziale
     startAutoplay();
 });

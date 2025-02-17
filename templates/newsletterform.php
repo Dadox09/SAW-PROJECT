@@ -5,10 +5,14 @@
         <div class="newsletter-group">
             <div class="input-with-icon">
                 <i class="fas fa-envelope"></i>
-                <input type="email" name="email" id="email" placeholder="La tua email" required>
+                <input type="email" 
+                       id="email" 
+                       name="email" 
+                       placeholder="Inserisci la tua email" 
+                       required>
             </div>
+            <button type="submit" name="submit" id="iscrivitiBtn">Iscriviti ora!</button>
         </div>
-        <button type="submit" name="submit" id="iscrivitiBtn">Iscriviti ora!</button>
     </form>
 </div>
-<script src="/websites/SAW-PROJECT/assets/js/newsletter/subscribe.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/js/newsletter/subscribe.js"></script>

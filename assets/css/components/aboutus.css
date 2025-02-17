@@ -4,6 +4,8 @@
     background-color: var(--color-cream);
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: var(--spacing-xl);
+    
 }
 
 .about-us h1 {
