@@ -4,7 +4,6 @@ require_once dirname(__FILE__) . '/../config/db_connect.php';
 require_once dirname(__FILE__) . '/ratings.php';
 header('Content-Type: application/json');
 
-// Verifica se l'utente è loggato
 if (!isset($_SESSION['user_id'])) {
     echo json_encode([
         'success' => false,

@@ -21,26 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordForm = document.getElementById('password-form');
     const newPasswordInput = document.getElementById('new_password');
     const confirmPasswordInput = document.getElementById('confirm_password');
-    
-    function updatePasswordRequirements(password) {
-        const lengthCheck = document.getElementById('length-check');
-        const letterCheck = document.getElementById('letter-check');
-        const numberCheck = document.getElementById('number-check');
-        
-        if (lengthCheck && letterCheck && numberCheck) {
-            lengthCheck.classList.toggle('valid', password.length >= 8);
-            letterCheck.classList.toggle('valid', /[A-Za-z]/.test(password));
-            numberCheck.classList.toggle('valid', /\d/.test(password));
-        }
-    }
 
-    if (newPasswordInput) {
-        newPasswordInput.addEventListener('input', function() {
-            updatePasswordRequirements(this.value);
-        });
-    }
 
-    // Gestione fetch per il form password
     if (passwordForm) {
         passwordForm.addEventListener('submit', function(e) {
             e.preventDefault();

@@ -1,7 +1,6 @@
 <?php
 require_once dirname(__FILE__) . '/../config/db_connect.php';
 
-// Funzione per salvare una nuova recensione
 function saveRating($userId, $rating, $comment) {
     $conn = connectDB();
     
@@ -9,7 +8,6 @@ function saveRating($userId, $rating, $comment) {
     $rating = intval($rating);
     $comment = htmlspecialchars($comment);
     
-    // Validazione
     if ($rating < 1 || $rating > 5) {
         return false;
     }
