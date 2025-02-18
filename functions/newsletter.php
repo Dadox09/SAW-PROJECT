@@ -24,7 +24,6 @@ try {
         exit;
     }
 
-    // Verifica se l'email esiste già
     $stmt = $conn->prepare("SELECT COUNT(*) FROM newsletter_subscribers WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -37,7 +36,6 @@ try {
         exit;
     }
 
-    // Inserisci la nuova email
     $stmt = $conn->prepare("INSERT INTO newsletter_subscribers (email) VALUES (?)");
     $stmt->bind_param("s", $email);
     $stmt->execute();

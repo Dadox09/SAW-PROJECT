@@ -6,7 +6,6 @@ if($_SERVER['HTTP_HOST'] === 'localhost') {
     define('DB_USER', 'root');
     define('DB_PASS', '');
     define('DB_NAME', 'sawproject');
-
 } else {
     define('DB_HOST', 'localhost');
     define('DB_USER', 's5470839');
