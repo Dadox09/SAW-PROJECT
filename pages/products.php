@@ -13,9 +13,9 @@
         <span class="counter">0</span>
     </div>
 
-    <!-- Overlay del carrello -->
     <div class="cart-overlay" id="cart-popup">
         <div class="cart-content">
+        <button class="quitCart">✖</button>
             <h2>Carrello</h2>
             <ul id="cart-items"></ul>
             <span id="total-price"></span>

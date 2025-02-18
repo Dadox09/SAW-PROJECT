@@ -236,6 +236,7 @@
 }
 
 .cart-content {
+    position: relative;
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -333,7 +334,18 @@
     margin-left: 2rem;
 }
 
-.remove-item:hover {
+.quitCart {
+    cursor: pointer;
+    color: black;
+    border: 1px solid #f44336;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.quitCart:hover {
     color: #d32f2f;
 }
 
