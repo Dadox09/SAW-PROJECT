@@ -118,6 +118,7 @@
                             <li id="length-check">Almeno 8 caratteri</li>
                             <li id="letter-check">Almeno una lettera</li>
                             <li id="number-check">Almeno un numero</li>
+                            <li id="special-check">Almeno un carattere speciale (@$!%*#?&)</li>
                         </ul>
                     </div>
 
