@@ -1,14 +1,16 @@
 <?php
+include '../templates/header.php';
+
 if (isset($_SESSION['user_id'])) {
     header('Location: ' . BASE_URL);
     exit;
 }
 
-include '../templates/header.php';
+
 ?>
 
-<link rel="stylesheet" href="../assets/css/auth/registration.css">
-<link rel="stylesheet" href="../assets/css/errors/errors.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/auth/registration.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/errors/errors.css">
 
 <div class="registration-container">
     <div class="registration-card">

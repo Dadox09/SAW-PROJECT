@@ -10,8 +10,8 @@ if (isset($_SESSION['user_id'])) {
 
 ?>
 
-<link rel="stylesheet" href="../assets/css/auth/login.css">
-<link rel="stylesheet" href="../assets/css/errors/errors.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/auth/login.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/errors/errors.css">
 
 <div class="login-container">
     <div class="login-card">

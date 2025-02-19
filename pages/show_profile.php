@@ -7,7 +7,7 @@
     }
 ?>
 
-<link rel="stylesheet" href="../assets/css/pages/show_profile.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/pages/show_profile.css">
 
 <div class="profile-container">
     <div class="profile-content">
@@ -134,6 +134,6 @@
     </div>
 </div>
 
-<script src="../assets/js/profile/update_profile.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/js/profile/update_profile.js"></script>
 
 <?php include '../templates/footer.php'; ?>

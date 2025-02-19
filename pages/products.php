@@ -1,7 +1,7 @@
 <?php include '../templates/header.php'; ?>
 
 
-<link rel="stylesheet" href="../assets/css/pages/products.css">
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/pages/products.css">
 
 <div class="products-container">
     <div class="cart-counter" id="cart-counter">
@@ -41,6 +41,6 @@
 </div>
 
 
-<script src="../assets/js/products/products.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/js/products/products.js"></script>
 
 <?php include '../templates/footer.php'; ?>
