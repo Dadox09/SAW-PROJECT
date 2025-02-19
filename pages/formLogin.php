@@ -1,10 +1,13 @@
 <?php
+
+include '../templates/header.php';
+
 if (isset($_SESSION['user_id'])) {
     header('Location: ' . BASE_URL);
     exit;
 }
 
-include '../templates/header.php';
+
 ?>
 
 <link rel="stylesheet" href="../assets/css/auth/login.css">

@@ -24,12 +24,10 @@ function sendNewsletter($recipients, $subject, $message) {
         // Impostazioni del mittente
         $mail->setFrom('coccoleecroissant@gmail.com', 'CoccoLe e Croissant');
 
-        // Aggiunta dei destinatari
         foreach ($recipients as $email) {
             $mail->addAddress($email);
         }
 
-        // Contenuto dell'email
         $mail->isHTML(true);
         $mail->Subject = $subject;
         $mail->Body = $message;

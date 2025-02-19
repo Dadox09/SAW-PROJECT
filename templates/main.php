@@ -1,6 +1,3 @@
-
-
-
 <div class="booking-container" id="main-content">
 <h2 class="booking-title">Prenota il Tuo Soggiorno di Lusso</h2>
     <div class="booking-content">

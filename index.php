@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coccole e Croissant B&B </title>
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.jpg">
 </head>
 <body>
 
@@ -22,5 +23,6 @@
     <?php require_once 'templates/newsletterform.php'; ?>
 
     <?php require_once 'templates/footer.php'; ?>
+    
 </body>
 </html>

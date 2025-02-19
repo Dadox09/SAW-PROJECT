@@ -5,7 +5,6 @@ require_once '../config/db_connect.php';
 
 header('Content-Type: application/json');
 
-// Verifica che la richiesta sia POST
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode([
         'status' => 'error',
@@ -27,7 +26,6 @@ if (!$email || !$password) {
 
     $conn = connectDB();
     
-    // Debug della connessione
     if ($conn->connect_error) {
         die(json_encode([
             'status' => 'error',
