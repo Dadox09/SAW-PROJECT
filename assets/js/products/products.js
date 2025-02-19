@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function createProductCard(product) {
         return `
-            <div class="product-card" data-id="${product.id}">
+            <div class="product-card">
                 <div class="product-image">
                     <img src="${product.image}" alt="${product.name}">
                 </div>
@@ -68,7 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCartCounter() {
-        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        let totalItems = 0;
+        for (let item of cart) {
+            totalItems += item.quantity;
+        }
         counter.textContent = totalItems;
     }
 
@@ -114,25 +117,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCartPopup() {
-        cartItems.innerHTML = '';
-
-        cart.forEach(item => {
-            const cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
-            cartItem.innerHTML = `
+        cartItems.innerHTML = cart.map(item => `
+            <div class="cart-item">
                 <div class="cart-item-info">
                     <h4>${item.name}</h4>
                     <p>Prezzo: €${item.price}</p>
                     <p>Quantità: ${item.quantity}</p>
                 </div>
                 <button class="remove-item" data-product-id="${item.id}">✖</button>
-            `;
+            </div>
+        `).join('');
 
-            cartItems.appendChild(cartItem);
-        });
-
-        const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-        total.innerHTML = 'Totale: €' + totalPrice.toFixed(2);
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        document.getElementById('total-price').textContent = `Totale: €${total.toFixed(2)}`;
     }
 
     cartCounter.addEventListener('click', function(e) {
