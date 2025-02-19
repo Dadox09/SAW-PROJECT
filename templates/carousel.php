@@ -41,4 +41,4 @@
     </div>
 </section>
 
-<script src="<?php echo BASE_URL; ?>/assets/js/carousel.js" defer></script>
+<script src="<?php echo BASE_URL; ?>/assets/js/carousel/carousel.js" defer></script>

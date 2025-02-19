@@ -1,22 +1,17 @@
 function showNotification(message, isSuccess) {
-    // Rimuovi notifiche esistenti
     const existingNotification = document.querySelector('.notification');
     if (existingNotification) {
         existingNotification.remove();
     }
 
-    // Crea l'elemento notifica
     const notification = document.createElement('div');
     notification.className = `notification ${isSuccess ? 'success' : 'error'}`;
     notification.textContent = message;
 
-    // Aggiungi la notifica al DOM
     document.body.appendChild(notification);
 
-    // Aggiungi classe per l'animazione di entrata
     setTimeout(() => notification.classList.add('show'), 10);
 
-    // Rimuovi la notifica dopo 5 secondi
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => notification.remove(), 300);
@@ -33,14 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('email').value;
             const button = document.getElementById('iscrivitiBtn');
             
-            // Disabilita il pulsante durante l'invio
             button.disabled = true;
             button.textContent = 'Iscrizione in corso...';
 
             const formData = new FormData();
             formData.append('email', email);
             
-            // Invia la richiesta al server
             fetch('functions/newsletter.php', {
                 method: 'POST',
                 body: formData
@@ -51,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     showNotification(data.message, true);
                     form.reset();
                     
-                    // Gestione dati aggiuntivi se presenti
                     if (data.data && data.data.emailSent === false) {
                         console.warn('Email di conferma non inviata');
                     }

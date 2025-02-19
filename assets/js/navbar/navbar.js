@@ -31,10 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (currentScroll > lastScroll && currentScroll > 100) {
-            // Scrolling down
             navbar.style.transform = 'translateY(-100%)';
         } else {
-            // Scrolling up
             navbar.style.transform = 'translateY(0)';
         }
         lastScroll = currentScroll;

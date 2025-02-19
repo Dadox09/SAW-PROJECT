@@ -70,7 +70,6 @@ $last_name = trim($_POST['lastname']);
             $result = $stmt->execute();
 
             if ($result) {
-                // Update session variables
                 $_SESSION['firstname'] = $first_name;
                 $_SESSION['lastname'] = $last_name;
                 $_SESSION['email'] = $email;

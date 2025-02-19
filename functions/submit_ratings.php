@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
     
-    // Salva la recensione
     if (saveRating($userId, $rating, $comment)) {
         echo json_encode([
             'success' => true,

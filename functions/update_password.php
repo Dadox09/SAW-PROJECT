@@ -35,7 +35,6 @@ try {
         exit;
     }
 
-    // Verifica requisiti nuova password
     if (strlen($new_password) < 8) {
         echo json_encode([
             'status' => 'error',
@@ -85,7 +84,6 @@ try {
         exit;
     }
 
-    // Aggiorna la password
     $stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
     $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
     $stmt->bind_param("si", $hashed_password, $user_id);
