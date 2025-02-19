@@ -4,24 +4,25 @@
     <div class="carousel-container">
         <div class="carousel-track">
             <div class="carousel-slide">
-                <img src="<?php echo BASE_URL; ?>/assets/carousel_images/room1.jpg" alt="Camera di lusso con vista">
-                <div class="carousel-caption">
-                    <h3>Suite di Lusso</h3>
-                    <p>Goditi il comfort in un ambiente raffinato</p>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="<?php echo BASE_URL; ?>/assets/carousel_images/room2.jpg" alt="Area relax con cioccolata">
+                <img src="<?php echo BASE_URL; ?>/assets/carousel_images/room1.jpg" alt="Area relax con cioccolata">
                 <div class="carousel-caption">
                     <h3>Area Relax</h3>
                     <p>Rilassati con la nostra cioccolata calda artigianale</p>
                 </div>
             </div>
             <div class="carousel-slide">
+                <img src="<?php echo BASE_URL; ?>/assets/carousel_images/room2.jpg" alt="Camera di lusso con vista">
+                <div class="carousel-caption">
+                    <h3>Suite di Lusso</h3>
+                    <p>Goditi il comfort in un ambiente raffinato</p>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
                 <img src="<?php echo BASE_URL; ?>/assets/carousel_images/room3.jpg" alt="Colazione gourmet">
                 <div class="carousel-caption">
-                    <h3>Colazione Gourmet</h3>
-                    <p>Inizia la giornata con i nostri dolci fatti in casa</p>
+                    <h3>Stanza con vista</h3>
+                    <p>Inizia la giornata con la migliore vista al mondo</p>
                 </div>
             </div>
         </div>
