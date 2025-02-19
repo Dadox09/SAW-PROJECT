@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
-    const categoryFilter = document.getElementById('category-filter');
-    const priceFilter = document.getElementById('price-filter');
     const productsGrid = document.querySelector('.products-grid');
     const cartCounter = document.querySelector('.cart-counter');
     const cartPopup = document.getElementById('cart-popup');
@@ -66,20 +64,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function filterProducts() {
         const searchTerm = searchInput.value.toLowerCase();
-        const selectedCategory = categoryFilter.value;
-        const priceSort = priceFilter.value;
 
         filteredProducts = products.filter(product => {
-            const matchesSearch = product.name.toLowerCase().includes(searchTerm);
-            const matchesCategory = selectedCategory === '' || product.category === selectedCategory;
-            return matchesSearch && matchesCategory;
+            return product.name.toLowerCase().includes(searchTerm);
         });
-
-        if (priceSort === 'asc') {
-            filteredProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-        } else if (priceSort === 'desc') {
-            filteredProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-        }
 
         updateProductsGrid();
     }
@@ -261,11 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
-
     searchInput.addEventListener('input', filterProducts);
-    categoryFilter.addEventListener('change', filterProducts);
-    priceFilter.addEventListener('change', filterProducts);
 
     loadProducts();
     loadCart();
