@@ -14,25 +14,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let cart = [];
     let orderHistory = [];
 
-
-
-    async function loadProducts() {
-        try {
-            const response = await fetch('../api/get_products.php');
-            const data = await response.json();
-
-            if (data.success) {
-                products = data.products;
-                filteredProducts = [...products];
-                updateProductsGrid();
-            } else {
-                console.error('Errore nel caricamento dei prodotti:', data.error);
+    function loadProducts() {
+        fetch('../api/get_products.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    products = data.products;
+                    filteredProducts = [...products];
+                    updateProductsGrid();
+                }
+            })
+            .catch(error => {
+                console.error('Errore nella richiesta:', error);
                 productsGrid.innerHTML = '<p class="error-message">Errore nel caricamento dei prodotti</p>';
-            }
-        } catch (error) {
-            console.error('Errore nella richiesta:', error);
-            productsGrid.innerHTML = '<p class="error-message">Errore nel caricamento dei prodotti</p>';
-        }
+            });
     }
 
     function createProductCard(product) {
