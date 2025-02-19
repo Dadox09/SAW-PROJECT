@@ -63,32 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoplay();
     }
 
-    // Touch events per il mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    track.addEventListener('touchstart', e => {
-        touchStartX = e.touches[0].clientX;
-    });
-
-    track.addEventListener('touchmove', e => {
-        touchEndX = e.touches[0].clientX;
-    });
-
-    track.addEventListener('touchend', () => {
-        const difference = touchStartX - touchEndX;
-        if (Math.abs(difference) > 50) { // Minima distanza per considerarlo uno swipe
-            if (difference > 0) {
-                // Swipe verso sinistra
-                moveToSlide(currentSlide + 1);
-            } else {
-                // Swipe verso destra
-                moveToSlide(currentSlide - 1);
-            }
-            resetAutoplay();
-        }
-    });
-
     // Pausa l'autoplay quando il mouse è sopra il carosello
     track.addEventListener('mouseenter', () => {
         clearInterval(autoplayInterval);
