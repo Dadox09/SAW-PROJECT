@@ -2,7 +2,7 @@
 session_start();
 require_once __DIR__ . '/../config/config.php';
 ?>
-
+<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/footer.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/hero.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/errors/errors.css">
 <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/components/main.css">

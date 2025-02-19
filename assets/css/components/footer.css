@@ -1,0 +1,15 @@
+footer{
+    background: var(--color-dark);
+    color: var(--color-cream);
+    padding: 2rem;
+}
+footer p{
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+footer-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

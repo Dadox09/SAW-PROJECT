@@ -1,5 +1,4 @@
 <?php
-// Definizione del BASE_URL
 if ($_SERVER['HTTP_HOST'] === 'localhost') {
     $base_url = 'http://localhost/websites/SAW-PROJECT';
 } else {

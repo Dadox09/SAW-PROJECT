@@ -14,7 +14,7 @@ require 'utils.php';
 /*                                            */
 /* DO NOT UPLOAD TEST FILES ON SAW21!         */
 /**********************************************/
-$baseurl = "http://localhost/websites/SAW-PROJECT/functions"; 
+$baseurl = "https://saw.dibris.unige.it/~s5470839/functions/"; 
 
 echo "[+] Testing Registration - Login - Show Profile\n";
 
